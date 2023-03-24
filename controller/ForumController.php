@@ -51,4 +51,18 @@
             ];
         }
 
+        // Fonction pour lister les topics d'une catégorie
+
+        public function listCategorieTopics($id)
+        {
+            $topicManager = new topicManager();
+
+            return [
+                "view" => VIEW_DIR."forum/listTopicsByCategorie.php",
+                "data" => [
+                    "topics" => $topicManager->listTopicsByCategorie($id)
+                ]
+            ];
+        }
+
     }

@@ -37,4 +37,18 @@
             ];
         }
 
+        // Fonction pour lister les posts d'un topic
+
+        public function listPosts($id)
+        {
+            $postManager = new postManager();
+
+            return [
+                "view" => VIEW_DIR."forum/listPostsByTopic.php",
+                "data" => [
+                    "posts" => $postManager->findPostsByTopic($id)
+                ]
+            ];
+        }
+
     }

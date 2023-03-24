@@ -6,28 +6,25 @@
     final class Topic extends Entity{
 
         private $id;
-        private $title;
+        private $nomTopic;
+        private $locked;
+        private $dateCreationTopic;
         private $user;
-        private $creationdate;
-        private $closed;
+        private $categorie;
 
         public function __construct($data){         
             $this->hydrate($data);        
         }
  
-        /**
-         * Get the value of id
-         */ 
+        // GETTERS & SETTERS
+
+        // Get value ID
         public function getId()
         {
                 return $this->id;
         }
 
-        /**
-         * Set the value of id
-         *
-         * @return  self
-         */ 
+        // Set value ID
         public function setId($id)
         {
                 $this->id = $id;
@@ -35,72 +32,70 @@
                 return $this;
         }
 
-        /**
-         * Get the value of title
-         */ 
-        public function getTitle()
+        // Get value NomTopic
+        public function getNomTopic()
         {
-                return $this->title;
+                return $this->nomTopic;
         }
 
-        /**
-         * Set the value of title
-         *
-         * @return  self
-         */ 
-        public function setTitle($title)
+        // Set value NomTopic
+        public function setNomTopic($nomTopic)
         {
-                $this->title = $title;
+                $this->nomTopic = $nomTopic;
 
                 return $this;
         }
 
-        /**
-         * Get the value of user
-         */ 
+        // Get value Locked
+        public function getLocked()
+        {
+                return $this->locked;
+        }
+
+       // Set value Locked
+        public function setLocked($locked)
+        {
+                $this->locked = $locked;
+
+                return $this;
+        }
+
+        // Get dateCreationTopic
+        public function getDateCreationTopic(){
+            $formattedDate = $this->dateCreationTopic->format("d/m/Y, H:i:s");
+            return $formattedDate;
+        }
+
+        // Set dateCreationTopic
+        public function setDateCreationTopic($date){
+            $this->dateCreationTopic = new \DateTime($date);
+            return $this;
+        }
+
+        // Get value User
         public function getUser()
         {
                 return $this->user;
         }
 
-        /**
-         * Set the value of user
-         *
-         * @return  self
-         */ 
+        // Set value User
         public function setUser($user)
         {
                 $this->user = $user;
 
                 return $this;
         }
-
-        public function getCreationdate(){
-            $formattedDate = $this->creationdate->format("d/m/Y, H:i:s");
-            return $formattedDate;
-        }
-
-        public function setCreationdate($date){
-            $this->creationdate = new \DateTime($date);
-            return $this;
-        }
-
-        /**
-         * Get the value of closed
-         */ 
-        public function getClosed()
+        
+        // Get value categorie
+        public function getCategorie()
         {
-                return $this->closed;
+                return $this->categorie;
         }
 
-        /**
-         * Set the value of closed
-         *
-         * @return  self
-         */ 
-        public function setClosed($closed)
+        //  Set value categorie
+        public function setCategorie($categorie)
         {
-                $this->closed = $closed;
+                $this->categorie = $categorie;
 
                 return $this;
         }

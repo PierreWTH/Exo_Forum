@@ -5,7 +5,8 @@
     use App\DAO;
     use Model\Managers\TopicManager;
 
-    class TopicManager extends Manager{
+    class TopicManager extends Manager
+    {
 
         protected $className = "Model\Entities\Topic";
         protected $tableName = "topic";

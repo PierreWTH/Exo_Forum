@@ -14,5 +14,4 @@
             parent::connect();
         }
 
-
     }

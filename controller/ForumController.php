@@ -7,6 +7,7 @@
     use App\ControllerInterface;
     use Model\Managers\TopicManager;
     use Model\Managers\PostManager;
+    use Model\Managers\CategorieManager;
     
     class ForumController extends AbstractController implements ControllerInterface{
 
@@ -23,7 +24,17 @@
             ];
         
         }
+        // Fonction pour lister des catégories 
+        public function listCategories()
+        {
+            $categorieManager = new CategorieManager();
 
-        
+            return [
+                "view" => VIEW_DIR."forum/listCategories.php",
+                "data" => [
+                    "categories" => $categorieManager->findAll(["nomCategorie", "DESC"])
+                ]
+            ];
+        }
 
     }

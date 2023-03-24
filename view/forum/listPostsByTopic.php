@@ -2,6 +2,8 @@
 
 $posts = $result["data"]['posts'];
 
+
+
 ?>
 
 <h1>Posts du topic</h1>
@@ -10,7 +12,7 @@ $posts = $result["data"]['posts'];
 foreach($posts as $post ){
 
     ?>
-    <p><?=$post->getTexte()?></p>
+    <p><?=$post->getTexte()?>     /     <?=$post->getDateCreationPost()?></p>
     <?php
 }
 

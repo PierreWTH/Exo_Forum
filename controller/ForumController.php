@@ -15,10 +15,12 @@
           
 
            $topicManager = new TopicManager();
+           $categorieManager = new CategorieManager();
 
             return [
                 "view" => VIEW_DIR."forum/listTopics.php",
                 "data" => [
+                    "categories" => $categorieManager->findAll(),
                     "topics" => $topicManager->findAll(["dateCreationTopic", "DESC"])
                 ]
             ];
@@ -32,7 +34,7 @@
             return [
                 "view" => VIEW_DIR."forum/listCategories.php",
                 "data" => [
-                    "categories" => $categorieManager->findAll(["nomCategorie", "DESC"])
+                    "categories" => $categorieManager->findAll(["nomCategorie"])
                 ]
             ];
         }

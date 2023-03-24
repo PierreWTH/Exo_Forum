@@ -70,7 +70,7 @@
                 return $this;
         }
 
-        // Get value topic
+        // Get value user
         public function getUser()
         {
                 return $this->user;

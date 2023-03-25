@@ -29,10 +29,6 @@
             );
         }
 
-        public function addTopic()
-        {
-            $sql = "INSERT INTO 
-                    FROM ".$this->tableName." t
-                    WHERE t.categorie_id = :id";
-        } 
+        
+
     }

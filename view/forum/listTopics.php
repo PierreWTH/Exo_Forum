@@ -21,13 +21,13 @@ foreach($topics as $topic ){
 <!--Formulaire ajout de film -->
 
 
-<form action="">
-    <input type = "text" placeholder = "Entrez le titre">
-    <input type = "textarea" placeholder = "Votre message">
+<form action="index.php?ctrl=forum&action=addTopic" method = "post" >
+    <input type = "text" name = "nomTopic" placeholder = "Entrez le titre">
+    <input type = "textarea" name = "texte" placeholder = "Votre message">
 
     <!--Boucle selection des catégories-->
 
-    <select name="" placeholder = "Catégorie">
+    <select name="categorie_id" placeholder = "Catégorie">
                 <option value="">Catégorie</option>
                 <?php
             foreach($categories as $categorie){ ?>
@@ -36,6 +36,6 @@ foreach($topics as $topic ){
         <?php } ?>
     </select>
 
-    <input type="submit" value="Ajouter">
+    <input type="submit" name = "submit" value="Ajouter">
 </form>
   

@@ -34,7 +34,7 @@
             return [
                 "view" => VIEW_DIR."forum/listCategories.php",
                 "data" => [
-                    "categories" => $categorieManager->findAll(["nomCategorie"])
+                    "categories" => $categorieManager->findAll(["nomCategorie", ""])
                 ]
             ];
         }
@@ -67,4 +67,40 @@
             ];
         }
 
+        public function addTopic()
+        {   
+
+            $topicManager = new TopicManager();
+            $categorieManager = new CategorieManager();
+
+            // Filtrage des données
+            if (isset($_POST['submit']))
+            {
+                
+                $nomTopic = filter_input(INPUT_POST, "nomTopic", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                var_dump($nomTopic);
+                $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                var_dump($texte);
+                $categorie = filter_input(INPUT_POST, "categorie_id", FILTER_VALIDATE_INT);
+                var_dump($categorie);
+                $user = 6;
+                var_dump($user);
+            
+
+                // Vérification des variables épurées
+
+                if ($nomTopic && $texte && $categorie && $user )
+                {
+                $topicManager->add(["nomTopic" => $nomTopic, "user_id" => $user, "categorie_id" => $categorie]);
+                } 
+
+                return [
+                    "view" => VIEW_DIR."forum/listTopics.php",
+                    "data" => [
+                        "categories" => $categorieManager->findAll(),
+                        "topics" => $topicManager->findAll(["dateCreationTopic", "DESC"])
+                    ]
+                ];
+            }   
+        }
     }

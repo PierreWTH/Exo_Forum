@@ -71,6 +71,7 @@
         {   
 
             $topicManager = new TopicManager();
+            $postManager = new PostManager();
             $categorieManager = new CategorieManager();
 
             // Filtrage des données
@@ -78,20 +79,18 @@
             {
                 
                 $nomTopic = filter_input(INPUT_POST, "nomTopic", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                var_dump($nomTopic);
                 $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                var_dump($texte);
                 $categorie = filter_input(INPUT_POST, "categorie_id", FILTER_VALIDATE_INT);
-                var_dump($categorie);
                 $user = 6;
-                var_dump($user);
+               
             
 
                 // Vérification des variables épurées
 
                 if ($nomTopic && $texte && $categorie && $user )
                 {
-                $topicManager->add(["nomTopic" => $nomTopic, "user_id" => $user, "categorie_id" => $categorie]);
+                $last_id = $topicManager->add(["nomTopic" => $nomTopic, "user_id" => $user, "categorie_id" => $categorie]);
+                $postManager->add(["texte" => $texte, "topic_id" => $last_id, "user_id" => $user]);
                 } 
 
                 return [

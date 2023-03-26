@@ -1,5 +1,8 @@
 <?php
 $posts = $result["data"]['posts'];
+$topicId = $_GET['id']
+
+
 
 ?>
 
@@ -18,7 +21,7 @@ foreach($posts as $post ){
 
 <!--Formulaire ajout de message -->
 
-<form action="index.php?ctrl=forum&action=addPost" method = "post" >
+<form action="index.php?ctrl=forum&action=addPost&id=<?=$topicId?>" method = "post" >
     <input type = "textarea" name = "texte" placeholder = "Votre message">
     <input type="submit" name = "submit" value="Poster">
 </form>

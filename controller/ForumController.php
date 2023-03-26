@@ -49,6 +49,7 @@
                 "view" => VIEW_DIR."forum/listPostsByTopic.php",
                 "data" => [
                     "posts" => $postManager->findPostsByTopic($id)
+                    
                 ]
             ];
         }
@@ -56,12 +57,14 @@
         // Fonction pour lister les topics d'une catégorie
 
         public function listCategorieTopics($id)
-        {
+        {   
+            $categorieManager = new CategorieManager();
             $topicManager = new topicManager();
 
             return [
                 "view" => VIEW_DIR."forum/listTopicsByCategorie.php",
                 "data" => [
+                    "categories" => $categorieManager->findAll(),
                     "topics" => $topicManager->listTopicsByCategorie($id)
                 ]
             ];
@@ -103,7 +106,7 @@
             }   
         }
 
-        public function addPost()
+        public function addPost($id)
         {   
             $postManager = new PostManager();
 
@@ -111,7 +114,6 @@
             if (isset($_POST['submit']))
             {
                 $id = (isset($_GET["id"])) ? $_GET["id"] : null ;
-                var_dump($id);
                 $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $topic_id = $id;
                 $user = 6;

@@ -1,8 +1,5 @@
 <?php
-
 $posts = $result["data"]['posts'];
-
-
 
 ?>
 
@@ -15,6 +12,14 @@ foreach($posts as $post ){
     <p><?=$post->getTexte()?>     /     <?=$post->getDateCreationPost()?></p>
     <?php
 }
+?>
 
+<h2> Ajouter un post </h2>
 
+<!--Formulaire ajout de message -->
+
+<form action="index.php?ctrl=forum&action=addPost" method = "post" >
+    <input type = "textarea" name = "texte" placeholder = "Votre message">
+    <input type="submit" name = "submit" value="Poster">
+</form>
   

@@ -102,4 +102,34 @@
                 ];
             }   
         }
+
+        public function addPost()
+        {   
+            $postManager = new PostManager();
+
+            // Filtrage des données
+            if (isset($_POST['submit']))
+            {
+                $id = (isset($_GET["id"])) ? $_GET["id"] : null ;
+                var_dump($id);
+                $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $topic_id = $id;
+                $user = 6;
+                
+
+                // Vérification des variables épurées
+
+                if ($texte && $user )
+                {
+                $postManager->add(["texte" => $texte, "topic_id" => $topic_id, "user_id" => $user]);
+                } 
+
+                return [
+                    "view" => VIEW_DIR."forum/listPostsByTopic.php",
+                    "data" => [
+                        "posts" => $postManager->findPostsByTopic($id)
+                    ]
+                ];
+            }   
+        }
     }

@@ -18,7 +18,7 @@ foreach($topics as $topic ){
 
 <h2>Ajouter un sujet</h2>
 
-<!--Formulaire ajout de film -->
+<!--Formulaire ajout de topic -->
 
 
 <form action="index.php?ctrl=forum&action=addTopic" method = "post" >

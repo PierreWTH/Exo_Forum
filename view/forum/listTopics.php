@@ -10,7 +10,7 @@ $categories = $result["data"]['categories'];
 foreach($topics as $topic ){
 
     ?>
-    <p><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?>  /  <?=$topic->getDateCreationTopic()?> <a></p>
+    <p><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?>  / <?=$topic->getUser()->getPseudo()?> / <?=$topic->getDateCreationTopic()?> <a></p>
     <?php
 }
 

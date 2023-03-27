@@ -26,6 +26,6 @@ foreach($topics as $topic ){
     <input type = "textarea" name = "texte" placeholder = "Votre message">
     <input type="hidden" name="categorie_id" value= "<?=$categorieId?>">   
 
-    <input type="submit" name = "submit" value="Ajouter">
+    <input type="submit" name = "submit" value="Ajouter à la catégorie">
 </form>
   

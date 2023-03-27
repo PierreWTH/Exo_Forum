@@ -1,20 +1,29 @@
 <?php
 $posts = $result["data"]['posts'];
-$topicId = $_GET['id']
+$topicId = $_GET['id'];
 
+// Stockage données dans post data
 
+$post_data = [];
+foreach($posts as $post ){
+    $titre = $post->getTopic()->getNomTopic();
+    $locked = $post->getTopic()->getLocked();
+    $date = $post->getTopic()->getDateCreationTopic();
+    $post_data[] = $post;
+}
 
 ?>
 
-<h1>Posts du topic</h1>
+<!-- Affichage données topics -->
+
+<h1><?= $titre." - ".$date ?></h1>
 
 <?php
-foreach($posts as $post ){
-
-    $locked = $post->getTopic()->getLocked()
+foreach($post_data as $post ){
+    
     ?>
 
-    <p><?=$post->getTexte()?>     /     <?=$post->getDateCreationPost()?> </p>
+    <p><?=$post->getUser()->getPseudo()?>    /    <?=$post->getTexte()?>     /     <?=$post->getDateCreationPost()?> </p>
 
     <?php
 }
@@ -26,7 +35,7 @@ foreach($posts as $post ){
 
 if ($locked == 1)
 {
-    echo "Ce topic est verouillé. Vous ne pouvez pas ajouter de post. ";
+    echo "Ce topic est verouillé. Vous ne pouvez pas répondre. ";
 }
 
 else 

@@ -80,12 +80,10 @@
             // Filtrage des données
             if (isset($_POST['submit']))
             {
-                
                 $nomTopic = filter_input(INPUT_POST, "nomTopic", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $categorie = filter_input(INPUT_POST, "categorie_id", FILTER_VALIDATE_INT);
-                $redirect_url = filter_input(INPUT_POST, "redirect_url", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                $user = 6;
+                $user = 6; 
                
             
 
@@ -97,13 +95,17 @@
                 $postManager->add(["texte" => $texte, "topic_id" => $last_id, "user_id" => $user]);
                 } 
 
-                return [
-                    "view" => VIEW_DIR."forum/listTopics.php",
-                    "data" => [
-                        "categories" => $categorieManager->findAll(),
-                        "topics" => $topicManager->findAll(["dateCreationTopic", "DESC"])
-                    ]
-                ];
+                if ($_POST['submit'] == "Ajouter")
+                {
+
+                    $this->redirectTo("forum", "listTopics");
+                }
+
+                else 
+                {
+                    $this->redirectTo("forum", "listCategorieTopics", $categorie);
+                }
+
             }   
         }
 
@@ -127,12 +129,8 @@
                 $postManager->add(["texte" => $texte, "topic_id" => $topic_id, "user_id" => $user]);
                 } 
 
-                return [
-                    "view" => VIEW_DIR."forum/listPostsByTopic.php",
-                    "data" => [
-                        "posts" => $postManager->findPostsByTopic($id)
-                    ]
-                ];
+                $this->redirectTo("forum", "listPosts", $id);
+                
             }   
         }
     }

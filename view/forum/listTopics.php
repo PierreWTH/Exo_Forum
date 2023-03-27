@@ -10,7 +10,7 @@ $categories = $result["data"]['categories'];
 foreach($topics as $topic ){
 
     ?>
-    <p><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?>  /  <?=$topic->getDateCreationTopic()?><a></p>
+    <p><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?>  /  <?=$topic->getDateCreationTopic()?> <a></p>
     <?php
 }
 
@@ -19,7 +19,6 @@ foreach($topics as $topic ){
 <h2>Ajouter un sujet</h2>
 
 <!--Formulaire ajout de topic -->
-
 
 <form action="index.php?ctrl=forum&action=addTopic" method = "post" >
     <input type = "text" name = "nomTopic" placeholder = "Entrez le titre">

@@ -84,13 +84,14 @@
                 $nomTopic = filter_input(INPUT_POST, "nomTopic", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $categorie = filter_input(INPUT_POST, "categorie_id", FILTER_VALIDATE_INT);
+                $redirect_url = filter_input(INPUT_POST, "redirect_url", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $user = 6;
                
             
 
                 // Vérification des variables épurées
 
-                if ($nomTopic && $texte && $categorie && $user )
+                if ($nomTopic && $texte && $categorie && $user ) 
                 {
                 $last_id = $topicManager->add(["nomTopic" => $nomTopic, "user_id" => $user, "categorie_id" => $categorie]);
                 $postManager->add(["texte" => $texte, "topic_id" => $last_id, "user_id" => $user]);

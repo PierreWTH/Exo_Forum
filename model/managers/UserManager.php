@@ -14,4 +14,35 @@
             parent::connect();
         }
 
+
+        public function findOneByEmail($email)
+        {
+            $sql = "SELECT *
+                    FROM ".$this->tableName." a 
+                    WHERE a.email = :email";
+
+            return $this->GetOneOrNullResult(
+                DAO::select($sql, ['email' => $email], false),
+                $this->className
+            );
+        }
+
+        public function findOneByPseudo($pseudo)
+        {
+            $sql = "SELECT *
+                    FROM ".$this->tableName." u 
+                    WHERE u.pseudo = :pseudo";
+
+            return $this->GetOneOrNullResult(
+                DAO::select($sql, ['pseudo' => $email], false),
+                $this->className
+            );
+        }
+
+
+
+
+
+
+
     }

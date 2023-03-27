@@ -21,7 +21,7 @@
                     FROM ".$this->tableName." a 
                     WHERE a.email = :email";
 
-            return $this->GetOneOrNullResult(
+            return $this->getOneOrNullResult(
                 DAO::select($sql, ['email' => $email], false),
                 $this->className
             );
@@ -33,10 +33,24 @@
                     FROM ".$this->tableName." u 
                     WHERE u.pseudo = :pseudo";
 
-            return $this->GetOneOrNullResult(
-                DAO::select($sql, ['pseudo' => $email], false),
+            return $this->getOneOrNullResult(
+                DAO::select($sql, ['pseudo' => $pseudo], false),
                 $this->className
             );
+        }
+
+        public function retrievePassword($email)
+        {
+            $sql = "SELECT password
+            FROM " .$this->tableName." u
+            WHERE u.email = :email";
+
+            return $this->getOneOrNullResult(
+                DAO::select($sql, ['email' => $email], false),
+                $this->className
+            );
+
+
         }
 
 

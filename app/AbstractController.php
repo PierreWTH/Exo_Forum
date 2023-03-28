@@ -1,5 +1,6 @@
 <?php
     namespace App;
+    use Model\Managers\UserManager;
 
     abstract class AbstractController{
 
@@ -21,7 +22,7 @@
         public function restrictTo($role){
             
             if(!Session::getUser() || !Session::getUser()->hasRole($role)){
-                $this->redirectTo("security", "login");
+                $this->redirectTo("security", "loginView");
             }
             return;
         }

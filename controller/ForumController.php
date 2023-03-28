@@ -83,7 +83,7 @@
                 $nomTopic = filter_input(INPUT_POST, "nomTopic", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $categorie = filter_input(INPUT_POST, "categorie_id", FILTER_VALIDATE_INT);
-                $user = 6; 
+                $user = Session::getUser()->getId();
                
             
 
@@ -119,7 +119,7 @@
                 $id = (isset($_GET["id"])) ? $_GET["id"] : null ;
                 $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $topic_id = $id;
-                $user = 6;
+                $user = Session::getUser()->getId();
                 
 
                 // Vérification des variables épurées

@@ -88,7 +88,10 @@
                 return $this;
         }
 
-        
+        public function hasRole($role)
+        {
+                return $this->role === $role;
+        }
 
        
     }

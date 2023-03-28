@@ -19,7 +19,7 @@
                     "view" => VIEW_DIR."security/register.php"
                 ];
             }
-
+        // redirection vers page login
         public function loginView()
         {
         
@@ -28,7 +28,7 @@
                 "view" => VIEW_DIR."security/login.php"
             ];
         }
-
+        // redirection vers page profil
         public function profile()
         {
         
@@ -38,7 +38,7 @@
             ];
         }
         
-        
+        // S'inscrire
         public function register()
         {   
             // Verif si le formulaire est envoyé
@@ -93,6 +93,7 @@
             }
         }
 
+        // Se logger 
         public function login()
         {
             $userManager = new UserManager();
@@ -127,6 +128,14 @@
                 }
             }
                 
+        }
+
+        // Se déconnecter
+        public function logout()
+        {
+            session_destroy();
+
+            $this->redirectTo("forum", "listTopics");
         }
             
 

@@ -38,7 +38,16 @@ if ($locked == 1)
     echo "Ce topic est verouillé. Vous ne pouvez pas répondre. ";
 }
 
-else 
+// Vérification que la personne est connectée
+
+elseif (!isset($_SESSION['user']))
+    {?>
+    <p>------------------------------------------------<p>
+    <p> Vous devez être connecté pour répondre <p>
+    
+<?php }
+
+else
 { ?>
 <h2> Ajouter un post </h2>
 

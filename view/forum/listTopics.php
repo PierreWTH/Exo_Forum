@@ -16,6 +16,13 @@ foreach($topics as $topic ){
 
 ?>
 
+<?php
+
+if (isset($_SESSION['user']))
+{
+
+?>
+
 <h2>Ajouter un sujet</h2>
 
 <!--Formulaire ajout de topic -->
@@ -38,3 +45,11 @@ foreach($topics as $topic ){
     <input type="submit" name = "submit" value="Ajouter">
 </form>
   
+<?php } 
+
+else 
+{?>
+<p>------------------------------------------------<p>
+<p> Vous devez être connecté pour ajouter un sujet <p>
+
+<?php } ?>

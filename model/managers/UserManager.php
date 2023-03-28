@@ -53,7 +53,17 @@
 
         }
 
+        public function hasRole($role)
+        {
+            $sql = "SELECT role
+            FROM " .$this->tableName." u
+            WHERE u.role = :role";
 
+            return $this->getOneOrNullResult(
+                DAO::select($sql, ['role' => $role], false),
+                $this->className
+            );
+        }
 
 
 

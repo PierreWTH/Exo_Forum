@@ -29,6 +29,16 @@
             );
         }
 
-        
+        public function topicLocker($id)
+        {
+        $sql = "UPDATE" .$this->tableName." 
+                SET locked = 1
+                WHERE id_topic = :id";
+
+            return $this->getOneOrNullResult(
+                DAO::update($sql, ['id' => $id]),
+                $this->className
+            );
+        }
 
     }

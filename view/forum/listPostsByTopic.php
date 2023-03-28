@@ -2,7 +2,7 @@
 $posts = $result["data"]['posts'];
 $topicId = $_GET['id'];
 
-// Stockage données dans post data
+// Stockage données dans variable post data
 
 $post_data = [];
 foreach($posts as $post ){
@@ -17,6 +17,14 @@ foreach($posts as $post ){
 <!-- Affichage données topics -->
 
 <h1><?= $titre." - ".$date ?></h1>
+
+<?php if(App\Session::isAdmin())
+{?>
+<button><a href="index.php?ctrl=forum&action=lockTopic&id=<?=$topicId?>">Verouiller le topic</a></button>
+
+<?php
+}
+?>
 
 <?php
 foreach($post_data as $post ){
@@ -47,11 +55,11 @@ elseif (!isset($_SESSION['user']))
     
 <?php }
 
+
+// Si user connecté, et topic pas verouillé, affichage du formulaire
 else
 { ?>
 <h2> Ajouter un post </h2>
-
-<!--Formulaire ajout de message -->
 
 <form action="index.php?ctrl=forum&action=addPost&id=<?=$topicId?>" method = "post" >
     <input type = "textarea" name = "texte" placeholder = "Votre message">

@@ -133,4 +133,20 @@
                 
             }   
         }
+    
+        public function lockTopic($id)
+        {
+            $topicManager = new TopicManager();
+
+            $topicManager-> topicLocker($id);
+
+            $this->redirectTo("forum", "listPosts", $id);
+        }
+    
+    
+    
+    
+    
+    
+    
     }

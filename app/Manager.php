@@ -75,6 +75,7 @@
             return DAO::delete($sql, ['id' => $id]); 
         }
 
+
         private function generate($rows, $class){
             foreach($rows as $row){
                 yield new $class($row);

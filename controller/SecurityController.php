@@ -28,6 +28,15 @@
                 "view" => VIEW_DIR."security/login.php"
             ];
         }
+
+        public function profile()
+        {
+        
+        
+            return [
+                "view" => VIEW_DIR."security/profile.php"
+            ];
+        }
         
         
         public function register()
@@ -64,23 +73,21 @@
                                     
                             else
                             {
-                                echo  "Le mot de passe doit être identique et contenir 8 caractères minimum. ";
+                                $_SESSION['error'] =  "Le mot de passe doit être identique et contenir 8 caractères minimum. ";
                             }
     
                         }
                         else
                         {
-                           echo "Ce pseudo est déja pris. ";
+                            $_SESSION['error'] = "Ce pseudo est déja pris. ";
                         }
                     }
                     else
                     {
-                       echo "Cet email est déja utilisé. ";
+                        $_SESSION['error'] = "Cet email est déja utilisé. ";
                     }
 
-                    return [
-                        "view" => VIEW_DIR."security/register.php"
-                    ];
+                    $this->redirectTo("security", "register");
                 }
             
             }
@@ -91,9 +98,10 @@
             $userManager = new UserManager();
             // Verification de l'envoi du form
             if (isset($_POST['submitSignUp']))
+            var_dump($_POST);
             {   
                 // Epuration des variables
-                $pseudo = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 
                 // Vérification variables épuréees
@@ -101,14 +109,18 @@
                 {   
                     // Récupération si le mdp existe bien en bdd
                     $dbPass = $userManager->retrievePassword($email);
-
+                    
                     if ($dbPass)
-                    {
+                    {   
+                        $user = $userManager ->findOneByEmail($email);
                         $hash = $dbPass->getPassword();
                         // Vérification si le hash corresponds au mdp
                         if (password_verify($password, $hash))
                         {
-                            $token = generateToken();
+                            Session::setUser($user);
+                            
+                            
+                            $this->redirectTo("forum", "listTopics");
                         }
                     }
 

@@ -15,12 +15,26 @@
             
            
                 return [
-                    "view" => VIEW_DIR."home.php"
+                    "view" => VIEW_DIR."/home/home.php"
                 ];
             }
-            
         
-   
+        public function rules(){
+        
+        
+            return [
+                "view" => VIEW_DIR."home/rules.php"
+            ];
+        }    
+
+        public function legalNotice(){
+        
+        
+            return [
+                "view" => VIEW_DIR."home/legalNotice.php"
+            ];
+        }  
+
         public function users(){
             //$this->restrictTo("ROLE_USER");
 

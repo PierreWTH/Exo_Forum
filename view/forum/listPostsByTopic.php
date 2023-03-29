@@ -12,11 +12,6 @@ foreach($posts as $post ){
     $post_data[] = $post;
 }
 
-if (isset($_SESSION['user']))
-{
- $user = $_SESSION['user']->getId();
-}
-
 ?>
 
 <!-- Affichage données topics -->
@@ -56,16 +51,18 @@ foreach($post_data as $post ){
 // Vérification si topic est locked
 
 if ($locked == 1)
-{
-    echo "Ce topic est verouillé. Vous ne pouvez pas répondre. ";
-}
+{?>
+    <p>------------------------------------------------</p>
+    <p> Ce topic est verouillé. </p>
+    
+<?php }
 
 // Vérification que la personne est connectée
 
 elseif (!isset($_SESSION['user']))
     {?>
-    <p>------------------------------------------------<p>
-    <p> Vous devez être connecté pour répondre <p>
+    <p>------------------------------------------------</p>
+    <p> Vous devez être connecté pour répondre </p>
     
 <?php }
 

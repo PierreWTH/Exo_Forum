@@ -77,7 +77,7 @@
             $postManager = new PostManager();
             $categorieManager = new CategorieManager();
 
-            // Filtrage des données
+            // Filtrage des données et on s'assure que l'utilisateur est bien connecté
             if (isset($_POST['submit']) && isset($_SESSION['user']))
             {
                 $nomTopic = filter_input(INPUT_POST, "nomTopic", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -114,7 +114,7 @@
         {   
             $postManager = new PostManager();
 
-            // Filtrage des données
+            // Filtrage des données et on s'assure que l'utilisateur est bien connecté
             if (isset($_POST['submit']) && isset($_SESSION['user']))
             {
                 $id = (isset($_GET["id"])) ? $_GET["id"] : null ;
@@ -154,7 +154,7 @@
 
         // Dévérouiller un topic
         public function unlockTopic($id)
-        {   
+        {   // On s'assure que l'utilisateur est bien connecté 
             if (isset($_SESSION['user']))
             {
                 $topicManager = new TopicManager();

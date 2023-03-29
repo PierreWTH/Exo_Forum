@@ -3,6 +3,7 @@
     
     use App\Manager;
     use App\DAO;
+    use Model\Managers\TopicManager;
 
     class PostManager extends Manager{
 
@@ -34,7 +35,14 @@
                 WHERE id_post = :id";
 
                 DAO::delete($sql, ['id' => $id]);
-            
+
+        $postManager = new PostManager();
+        $topicId = 85;
+
+        $sql = "SELECT COUNT(*) AS post_count 
+                FROM ".$this->tableName."
+                WHERE topic_id = :topicId";
+
         
         }
 

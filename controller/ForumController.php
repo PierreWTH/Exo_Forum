@@ -155,6 +155,21 @@
             
             $this->redirectTo("forum", "listPosts", $id);
         }
+
+        // Supprimer un post 
+        public function deletePost($id)
+        
+        {  
+            $postManager = new postManager();
+
+            $topicId = $postManager->findOneByid($id)->getTopic()->getId();
+
+            $postManager-> postDeleter($id);
+            
+            $this->redirectTo("forum", "listPosts", $topicId);
+
+
+        }
     
     
     

@@ -28,4 +28,17 @@
             );
         }
 
+        public function postDeleter($id)
+        {
+        $sql = "DELETE FROM ".$this->tableName." 
+                WHERE id_post = :id";
+
+                DAO::delete($sql, ['id' => $id]);
+            
+        
+        }
+
+
+
+
     }

@@ -18,30 +18,31 @@ foreach($posts as $post ){
 
 <h1><?= $titre." - ".$date ?></h1>
 
-<?php if(App\Session::isAdmin())
+<?php 
+if(App\Session::isAdmin())
 {?>
 <button><a href="index.php?ctrl=forum&action=lockTopic&id=<?=$topicId?>">Verouiller le topic</a></button>
 
 <?php
-}
 
-if($locked == 1)
-{?>
-<button><a href="index.php?ctrl=forum&action=unlockTopic&id=<?=$topicId?>">Dévérouiller le topic</a></button>
+    if($locked == 1)
+    {?>
+    <button><a href="index.php?ctrl=forum&action=unlockTopic&id=<?=$topicId?>">Dévérouiller le topic</a></button>
 
-<?php
-}
-?>
+    <?php
+    }
+}?>
 
 <?php
 foreach($post_data as $post ){
     
     ?>
 
-    <p><?=$post->getUser()->getPseudo()?>    /    <?=$post->getTexte()?>     /     <?=$post->getDateCreationPost()?> </p>
+    <p><?=$post->getUser()->getPseudo()?>    /    <?=$post->getTexte()?>     /     <?=$post->getDateCreationPost()?> / <button><a href = "index.php?ctrl=forum&action=deletePost&id=<?=$post->getId()?>">Supprimer</a></button></p>
 
     <?php
 }
+
 ?>
 
 <?php

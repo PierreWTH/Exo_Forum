@@ -171,7 +171,17 @@
 
         }
     
-    
+        // Supprimer topic 
+        public function deleteTopic($id)
+        
+        {  
+            $topicManager = new topicManager();
+
+            $topicManager-> topicDeleter($id);
+           
+
+
+        }
     
     
     

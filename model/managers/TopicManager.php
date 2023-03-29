@@ -51,6 +51,15 @@
         
         }
 
+        public function topicDeleter($id)
+        {
+        $sql = "DELETE FROM ".$this->tableName." 
+                WHERE id_topic = :id";
+
+                DAO::delete($sql, ['id' => $id]);
+            
         
+        }
+
 
     }

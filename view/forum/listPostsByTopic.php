@@ -24,6 +24,13 @@ foreach($posts as $post ){
 
 <?php
 }
+
+if($locked == 1)
+{?>
+<button><a href="index.php?ctrl=forum&action=unlockTopic&id=<?=$topicId?>">Dévérouiller le topic</a></button>
+
+<?php
+}
 ?>
 
 <?php

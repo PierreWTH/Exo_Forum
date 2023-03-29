@@ -109,6 +109,7 @@
             }   
         }
 
+        // Ajouter un post
         public function addPost($id)
         {   
             $postManager = new PostManager();
@@ -133,13 +134,25 @@
                 
             }   
         }
-    
+        
+        // Verouiller un topic 
         public function lockTopic($id)
         {
             $topicManager = new TopicManager();
 
             $topicManager-> topicLocker($id);
+            
+            $this->redirectTo("forum", "listPosts", $id);
 
+        }
+
+        // Dévérouiller un topic
+        public function unlockTopic($id)
+        {
+            $topicManager = new TopicManager();
+
+            $topicManager-> topicUnlocker($id);
+            
             $this->redirectTo("forum", "listPosts", $id);
         }
     

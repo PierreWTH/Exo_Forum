@@ -31,14 +31,24 @@
 
         public function topicLocker($id)
         {
-        $sql = "UPDATE" .$this->tableName." 
+        $sql = "UPDATE ".$this->tableName." 
                 SET locked = 1
                 WHERE id_topic = :id";
 
-            return $this->getOneOrNullResult(
-                DAO::update($sql, ['id' => $id]),
-                $this->className
-            );
+                DAO::update($sql, ['id' => $id]);
+            
+        
+        }
+
+        public function topicUnlocker($id)
+        {
+        $sql = "UPDATE ".$this->tableName." 
+                SET locked = 0
+                WHERE id_topic = :id";
+
+                DAO::update($sql, ['id' => $id]);
+            
+        
         }
 
     }

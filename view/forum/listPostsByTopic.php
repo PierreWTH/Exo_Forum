@@ -12,6 +12,11 @@ foreach($posts as $post ){
     $post_data[] = $post;
 }
 
+if (isset($_SESSION['user']))
+{
+ $user = $_SESSION['user']->getId();
+}
+
 ?>
 
 <!-- Affichage données topics -->
@@ -38,12 +43,13 @@ foreach($post_data as $post ){
     
     ?>
 
-    <p><?=$post->getUser()->getPseudo()?>    /    <?=$post->getTexte()?>     /     <?=$post->getDateCreationPost()?> / <button><a href = "index.php?ctrl=forum&action=deletePost&id=<?=$post->getId()?>">Supprimer</a></button></p>
+    <p><?=$post->getUser()->getPseudo()?>    /    <?=$post->getTexte()?>     /     <?=$post->getDateCreationPost()?>
+    
+    <?php if (App\Session::isAdmin() || App\Session::getUser() == $post->getUser()){ ?>
 
-    <?php
-}
-
-?>
+        <button><a href = "index.php?ctrl=forum&action=deletePost&id=<?=$post->getId()?>">Supprimer</a></button></p>
+    
+    <?php } } ?>
 
 <?php
 

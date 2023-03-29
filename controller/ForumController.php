@@ -78,7 +78,7 @@
             $categorieManager = new CategorieManager();
 
             // Filtrage des données
-            if (isset($_POST['submit']))
+            if (isset($_POST['submit']) && isset($_SESSION['user']))
             {
                 $nomTopic = filter_input(INPUT_POST, "nomTopic", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -115,7 +115,7 @@
             $postManager = new PostManager();
 
             // Filtrage des données
-            if (isset($_POST['submit']))
+            if (isset($_POST['submit']) && isset($_SESSION['user']))
             {
                 $id = (isset($_GET["id"])) ? $_GET["id"] : null ;
                 $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -138,36 +138,55 @@
         // Verouiller un topic 
         public function lockTopic($id)
         {
-            $topicManager = new TopicManager();
+            if (isset($_SESSION['user']))
+            {
+                $topicManager = new TopicManager();
 
-            $topicManager-> topicLocker($id);
-            
-            $this->redirectTo("forum", "listPosts", $id);
-
+                $topicManager-> topicLocker($id);
+                
+                $this->redirectTo("forum", "listPosts", $id);
+            }
+            else 
+            {
+                $this->redirectTo("forum", "listPosts", $id);
+            }
         }
 
         // Dévérouiller un topic
         public function unlockTopic($id)
-        {
-            $topicManager = new TopicManager();
+        {   
+            if (isset($_SESSION['user']))
+            {
+                $topicManager = new TopicManager();
 
-            $topicManager-> topicUnlocker($id);
-            
-            $this->redirectTo("forum", "listPosts", $id);
+                $topicManager-> topicUnlocker($id);
+                
+                $this->redirectTo("forum", "listPosts", $id);
+            }
+            else 
+            {
+                $this->redirectTo("forum", "listPosts", $id);
+            }
         }
 
         // Supprimer un post 
         public function deletePost($id)
         
-        {  
-            $postManager = new postManager();
+        {  if (isset($_SESSION['user']))
+            {
+                $postManager = new postManager();
 
-            $topicId = $postManager->findOneByid($id)->getTopic()->getId();
+                $topicId = $postManager->findOneByid($id)->getTopic()->getId();
 
-            $postManager-> postDeleter($id);
-            
-            $this->redirectTo("forum", "listPosts", $topicId);
-
+                $postManager-> postDeleter($id);
+                
+                $this->redirectTo("forum", "listPosts", $topicId);
+            }
+            else 
+            {
+                $this->redirectTo("forum", "listTopics");
+            }
+    
 
         }
     
@@ -175,12 +194,19 @@
         public function deleteTopic($id)
         
         {  
+            if (isset($_SESSION['user']))
+            {
+
             $topicManager = new topicManager();
 
             $topicManager-> topicDeleter($id);
             
             $this->redirectTo("forum", "listTopics");
-
+            }
+            else 
+            {
+                $this->redirectTo("forum", "listPosts", $topicId);
+            }
         }
     
     

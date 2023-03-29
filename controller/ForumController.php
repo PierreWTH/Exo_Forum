@@ -178,8 +178,8 @@
             $topicManager = new topicManager();
 
             $topicManager-> topicDeleter($id);
-           
-
+            
+            $this->redirectTo("forum", "listTopics");
 
         }
     

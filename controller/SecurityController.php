@@ -123,11 +123,30 @@
                             
                             $this->redirectTo("forum", "listTopics");
                         }
+
+                        else 
+                        {
+                            $_SESSION['error'] = "Votre mot de passe est incorrect. ";
+                        }
+                    }
+
+                    else 
+                    {
+                        $_SESSION['error'] = "Votre mot de passe est incorrect. ";
+                       
                     }
 
                 }
-            }
+                else
+                {
+                    $_SESSION['error'] = "Les informations que vous avez rentré sont incorrectes. ";
+                    
+                }
+            
                 
+            }
+            
+            $this->redirectTo("security", "loginView");
         }
 
         // Se déconnecter

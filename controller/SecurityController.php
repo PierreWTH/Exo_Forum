@@ -99,54 +99,70 @@
             $userManager = new UserManager();
             // Verification de l'envoi du form
             if (isset($_POST['submitLogin']))
-            
-            {   
-                // Epuration des variables
-                $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            { 
                 
-                // Vérification variables épuréees
-                if ($email && $password)
-                {   
-                    // Récupération si le mdp existe bien en bdd
-                    $dbPass = $userManager->retrievePassword($email);
+                    // Epuration des variables
+                    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                     
-                    if ($dbPass)
-                    {   
-                        $user = $userManager ->findOneByEmail($email);
-                        $hash = $dbPass->getPassword();
-                        // Vérification si le hash corresponds au mdp
-                        if (password_verify($password, $hash))
-                        {
-                            Session::setUser($user);
-                            
-                            
-                            $this->redirectTo("forum", "listTopics");
-                        }
 
-                        else 
+                    // Vérification variables épuréees
+                    if ($email && $password)
+                    { 
+
+                        // Récupération si le mdp existe bien en bdd
+                        $dbPass = $userManager->retrievePassword($email);
+                        
+                        if ($dbPass)
+                        {   
+                            $user = $userManager ->findOneByEmail($email);
+                            $hash = $dbPass->getPassword();
+                            // Vérification si le hash corresponds au mdp
+                            if (password_verify($password, $hash))
+                            {   
+                                // Verification que l'email existe bien en bdd
+                                if ($userManager->findOneByEmail($email) != NULL )
+                                {   
+                                    // Récupération du ban status
+                                    $banStatus = $userManager->findOneByEmail($email)->getBanStatus();
+                                    
+                                    // Vérification du ban status
+                                    if ($banStatus !=4)
+                                    {
+                                        Session::setUser($user);
+                        
+                                        $this->redirectTo("forum", "listTopics");
+                                    }
+                                    else
+                                    {
+                                        $_SESSION['error'] = "Vous avez été banni. ";   
+                                    }
+                                }
+                                else
+                                {
+                                    $_SESSION['error'] = "Adresse mail inconnue. ";   
+                                }
+                                
+                            }
+                            else 
+                            {
+                                $_SESSION['error'] = "Votre mot de passe est incorrect. ";
+                            }
+                        }
+                        else
                         {
-                            $_SESSION['error'] = "Votre mot de passe est incorrect. ";
+                            $_SESSION['error'] = "Votre dentifiant est incorrect. "; 
                         }
                     }
-
-                    else 
+                    else
                     {
-                        $_SESSION['error'] = "Votre mail est incorrect. ";
-                       
+                        $_SESSION['error'] = "Les informations que vous avez rentré sont incorrectes. ";
+                        
                     }
-
-                }
-                else
-                {
-                    $_SESSION['error'] = "Les informations que vous avez rentré sont incorrectes. ";
-                    
-                }
             
-                
+            $this->redirectTo("security", "loginView");    
+            
             }
-            
-            $this->redirectTo("security", "loginView");
         }
 
         // Se déconnecter A MODIFIER POUR METTRE USER UNSET setUSER = NULL

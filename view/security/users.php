@@ -8,7 +8,30 @@ $users = $result["data"]['users'];
 foreach($users as $user ){
 
     ?>
-    <p><?=$user->getPseudo()?>  / <?=$user->getDateInscription()?> / <?=$user->getEmail()?> / <?=$user->getBanStatus()?></p>
+    <p><?=$user->getPseudo()?>  / <?=$user->getDateInscription()?> / Email : <?=$user->getEmail()?> / 
+    
+    <?php 
+    // Afficher le statut de l'user
+    switch($user->getBanStatus())
+    {
+        case 1:
+            echo "Rien a signaler";
+            break;
+
+        case 2: 
+            echo "Ban leger";
+            break;
+        
+        case 3: 
+            echo "Ban moyen";
+            break;
+        
+        case 4:
+            echo "Ban lourd";
+            break;
+    }
+    
+     ?>
     
     <!-- Formulaire de banissement -->
     <form action="index.php?ctrl=security&action=banUser&id=<?= $user->getId() ?>" method = "post" > 

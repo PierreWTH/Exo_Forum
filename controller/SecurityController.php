@@ -55,15 +55,18 @@
                 if ($email && $pseudo && $password)
                 {
                     $userManager = new userManager();
-
+                    // Verification si l'adresse mail existe déja
                     if (!$userManager->findOneByEmail($email))
-                    {
+                    {   
+                        // Vérification si le pseudo existe déja
                         if (!$userManager->findOneByPseudo($pseudo))
-                        {
+                        {   
+                            // Vérification du mot de passe
                             if (($password == $confirmPassword) and strlen($password) >= 8)
-                            {
+                            {   
+                                // hachage du mdp
                                 $hash = password_hash($password, PASSWORD_DEFAULT);
-
+                                // ajout de l'user
                                 $userManager->add(["email" => $email, "pseudo" => $pseudo, "password" => $hash, "role" => $role]);
                             
                                 return [
@@ -166,14 +169,16 @@
             }
         }
 
-        // Se déconnecter A MODIFIER POUR METTRE USER UNSET setUSER = NULL
+        // Se déconnecter 
         public function logout()
         {
-            session_destroy();
+            Session::unsetUser();
 
             $this->redirectTo("forum", "listTopics");
         }
         
+
+        // Bannir un utilisateur
         public function banUser($id)
         {
             $userManager = new UserManager;

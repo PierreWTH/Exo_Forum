@@ -33,6 +33,10 @@
             $_SESSION["user"] = $user;
         }
 
+        public static function unsetUser(){
+            $_SESSION["user"] = NULL;
+        }
+
         public static function getUser(){
             return (isset($_SESSION['user'])) ? $_SESSION['user'] : false;
         }

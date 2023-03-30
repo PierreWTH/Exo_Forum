@@ -54,6 +54,19 @@
             ];
         }
 
+        public function listPostsByTopicCategorie($id)
+        {
+            $postManager = new postManager();
+
+            return [
+                "view" => VIEW_DIR."forum/listPostsByTopicCategorie.php",
+                "data" => [
+                    "posts" => $postManager->findPostsByTopic($id)
+                    
+                ]
+            ];
+        }
+
         // Fonction pour lister les topics d'une catégorie
 
         public function listCategorieTopics($id)
@@ -197,6 +210,7 @@
                 {
                     $this->redirectTo("forum", "listPosts", $topicId);
                 }
+
                 else
                 {
                     $this->redirectTo("forum", "listTopics");
@@ -205,6 +219,38 @@
             else 
             {
                 $this->redirectTo("forum", "listTopics");
+            }
+    
+        }
+
+        public function deletePostByCat($id)
+        
+        {  if (isset($_SESSION['user']))
+            {
+                $postManager = new postManager();
+
+                $topicId = $postManager->findOneByid($id)->getTopic()->getId();
+                $categorie = $postManager->findOneByid($id)->getTopic()->getCategorie()->getId();
+                
+                // Récuperation du nombre de posts
+                $nbrPostRaw = $postManager-> postDeleter($id);
+
+                $nbrPost = intval($nbrPostRaw['post_count']);
+                
+                // Redirection en fonction du nombre de posts
+                if ($nbrPost > 0)
+                {
+                    $this->redirectTo("forum", "listPostsByTopicCategorie", $topicId);
+                }
+                
+                else
+                {
+                    $this->redirectTo("forum", "listCategorieTopics", $categorie);
+                }
+            }
+            else 
+            {
+                $this->redirectTo("forum", "listCategorieTopics", $categorie);
             }
     
         }

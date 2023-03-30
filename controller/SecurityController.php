@@ -98,7 +98,7 @@
         {
             $userManager = new UserManager();
             // Verification de l'envoi du form
-            if (isset($_POST['submitSignUp']))
+            if (isset($_POST['submitLogin']))
             
             {   
                 // Epuration des variables
@@ -157,18 +157,21 @@
             $this->redirectTo("forum", "listTopics");
         }
         
-        public function banUser($id, $level)
+        public function banUser($id)
         {
             $userManager = new UserManager;
 
             if (isset($_POST['submitBan']))
-            {
-                $level = filter_input(INPUT_POST, "level", FILTER_SANITIZE_NUMBER_INT);
-                $id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT);
+            {   
                 
-                if($level && $id)
+                $level = filter_input(INPUT_POST, "level", FILTER_SANITIZE_NUMBER_INT);
+                
+                if($level)
                 {
                     $userManager->userBanner($id, $level);
+                    $this->redirectTo("home", "users");
+
+                
                 }
             }
 

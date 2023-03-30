@@ -8,12 +8,10 @@
         
         public function redirectTo($ctrl = null, $action = null, $id = null){
 
-            if($ctrl != "home"){
                 $url = $ctrl ? "?ctrl=".$ctrl : "";
                 $url.= $action ? "&action=".$action : "";
                 $url.= $id ? "&id=".$id : "";
-            }
-            else $url = "/";
+           
             header("Location: $url");
             die();
 

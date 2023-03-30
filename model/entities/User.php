@@ -11,6 +11,8 @@
         private $dateInscription;
         private $password;
         private $role;
+        private $email;
+        private $banStatus;
 
         public function __construct($data){         
             $this->hydrate($data);        
@@ -94,4 +96,36 @@
         }
 
        
+
+        
+
+        // Get email
+        public function getEmail()
+        {
+                return $this->email;
+        }
+
+        // Set email
+        public function setEmail($email)
+        {
+                $this->email = $email;
+
+                return $this;
+        }
+
+       
+
+        // Get banStatus
+        public function getBanStatus()
+        {
+                return $this->banStatus;
+        }
+
+       // Set banStatus
+        public function setBanStatus($banStatus)
+        {
+                $this->banStatus = $banStatus;
+
+                return $this;
+        }
     }

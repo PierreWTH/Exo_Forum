@@ -177,11 +177,13 @@
                 $postManager = new postManager();
 
                 $topicId = $postManager->findOneByid($id)->getTopic()->getId();
-
+                
+                // Récuperation du nombre de posts
                 $nbrPostRaw = $postManager-> postDeleter($id);
 
                 $nbrPost = intval($nbrPostRaw['post_count']);
                 
+                // Redirection en fonction du nombre de posts
                 if ($nbrPost > 0)
                 {
                     $this->redirectTo("forum", "listPosts", $topicId);

@@ -53,6 +53,16 @@
 
         }
 
+        public function userBanner($id, $level)
+        {
+            $sql = "INSERT".$this->tableName." ('ban_status')
+            VALUES ( ':level' )
+            WHERE id_user = :id";
+
+                DAO::insert($sql, ['id' => $id, 'level' => $level], false);
+           
+        }
+
 
 
 

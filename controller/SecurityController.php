@@ -156,6 +156,13 @@
 
             $this->redirectTo("forum", "listTopics");
         }
-            
+        
+        public function banUser($id, $level)
+        {
+            $userManager = new UserManager;
+
+            $userManager->userBanner();
+
+        }
 
     }

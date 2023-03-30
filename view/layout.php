@@ -60,7 +60,7 @@
             </main>
         </div>
         <footer>
-            <p>&copy; 2020 - Forum CDA - <a href="index.php?ctrl=home&action=rules">Règlement du forum</a> - <a href="index.php?ctrl=home&action=legalNotice">Mentions légales</a></p>
+            <p>&copy; 2023 - Forum PierreWTH - <a href="index.php?ctrl=home&action=rules">Règlement du forum</a> - <a href="index.php?ctrl=home&action=legalNotice">Mentions légales</a></p>
             <!--<button id="ajaxbtn">Surprise en Ajax !</button> -> cliqué <span id="nbajax">0</span> fois-->
         </footer>
     </div>

@@ -21,10 +21,24 @@ foreach($topics as $topic ){
 
 <?php
 
-if (isset($_SESSION['user']))
+if ((!isset($_SESSION['user']))) 
 {
+    ?>
+    <p>------------------------------------------------<p>
+    <p> Vous devez être connecté pour ajouter un sujet<p>
+    
+<?php } 
 
-?>
+elseif (App\Session::getUser()->getBanStatus() == 3 || App\Session::getUser()->getBanStatus() == 2) 
+{
+    ?>
+    <p>------------------------------------------------<p>
+    <p>Vous avec un banissement léger ou moyen, vous ne pouvez pas poster de topics. <p>
+    
+<?php } 
+
+else 
+{?>
 
 <h2>Ajouter un sujet</h2>
 
@@ -50,9 +64,3 @@ if (isset($_SESSION['user']))
   
 <?php } 
 
-else 
-{?>
-<p>------------------------------------------------<p>
-<p> Vous devez être connecté pour ajouter un sujet <p>
-
-<?php } ?>

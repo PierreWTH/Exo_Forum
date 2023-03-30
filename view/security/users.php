@@ -4,6 +4,14 @@ $users = $result["data"]['users'];
 
 <h1>Liste des utilisateurs</h1>
 
+<p> Niveau des bans : </p>
+
+<ul>
+    <li> Ban léger : plus le droit de poster de topics. </li>
+    <li> Ban moyen : plus le droit de poster de topics ni de messages. </li>
+    <li> Ban lourd : plus le droit de se connecter. </li>
+</ul>
+
 <?php
 foreach($users as $user ){
 

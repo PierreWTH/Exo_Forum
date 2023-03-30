@@ -84,6 +84,7 @@
                 $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $categorie = filter_input(INPUT_POST, "categorie_id", FILTER_VALIDATE_INT);
                 $user = Session::getUser()->getId();
+                $userStatus = Session::getUser()->getBanStatus();
                
             
 
@@ -91,8 +92,12 @@
 
                 if ($nomTopic && $texte && $categorie && $user ) 
                 {
-                $last_id = $topicManager->add(["nomTopic" => $nomTopic, "user_id" => $user, "categorie_id" => $categorie]);
-                $postManager->add(["texte" => $texte, "topic_id" => $last_id, "user_id" => $user]);
+                    if ($userStatus != 2 && $userStatus != 3)
+                    {
+                        $last_id = $topicManager->add(["nomTopic" => $nomTopic, "user_id" => $user, "categorie_id" => $categorie]);
+                        $postManager->add(["texte" => $texte, "topic_id" => $last_id, "user_id" => $user]);
+                    }
+                
                 } 
 
                 if ($_POST['submit'] == "Ajouter")
@@ -121,13 +126,17 @@
                 $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $topic_id = $id;
                 $user = Session::getUser()->getId();
-                
+                $userStatus = Session::getUser()->getBanStatus();
 
                 // Vérification des variables épurées
 
                 if ($texte && $user )
-                {
-                $postManager->add(["texte" => $texte, "topic_id" => $topic_id, "user_id" => $user]);
+                {   
+                    if ($userStatus != 3)
+                    {
+                        $postManager->add(["texte" => $texte, "topic_id" => $topic_id, "user_id" => $user]);
+                    }
+                    
                 } 
 
                 $this->redirectTo("forum", "listPosts", $id);

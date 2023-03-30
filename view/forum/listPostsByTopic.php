@@ -66,8 +66,16 @@ elseif (!isset($_SESSION['user']))
     
 <?php }
 
+// Vérification du statut
 
-// Si user connecté, et topic pas verouillé, affichage du formulaire
+elseif (App\Session::getUser()->getBanStatus() == 3)
+    {?>
+    <p>------------------------------------------------</p>
+    <p> Vous ne pouvez pas répondre, vous avez un ban moyen. </p>
+    
+<?php }
+
+// Si user connecté, pas banni et topic pas verouillé, affichage du formulaire
 else
 { ?>
 <h2> Ajouter un post </h2>

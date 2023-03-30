@@ -87,7 +87,7 @@
                         $_SESSION['error'] = "Cet email est déja utilisé. ";
                     }
 
-                    $this->redirectTo("security", "register");
+                    $this->redirectTo("security", "index");
                 }
             
             }
@@ -117,6 +117,7 @@
                         {   
                             $user = $userManager ->findOneByEmail($email);
                             $hash = $dbPass->getPassword();
+
                             // Vérification si le hash corresponds au mdp
                             if (password_verify($password, $hash))
                             {   

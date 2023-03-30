@@ -178,16 +178,24 @@
 
                 $topicId = $postManager->findOneByid($id)->getTopic()->getId();
 
-                $postManager-> postDeleter($id);
+                $nbrPostRaw = $postManager-> postDeleter($id);
+
+                $nbrPost = intval($nbrPostRaw['post_count']);
                 
-                $this->redirectTo("forum", "listPosts", $topicId);
+                if ($nbrPost > 0)
+                {
+                    $this->redirectTo("forum", "listPosts", $topicId);
+                }
+                else
+                {
+                    $this->redirectTo("forum", "listTopics");
+                }
             }
             else 
             {
                 $this->redirectTo("forum", "listTopics");
             }
     
-
         }
     
         // Supprimer topic 

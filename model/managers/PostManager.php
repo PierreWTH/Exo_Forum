@@ -31,19 +31,30 @@
 
         public function postDeleter($id)
         {
-        $sql = "DELETE FROM ".$this->tableName." 
+
+        $topicId = $this->findOneById($id)->getTopic()->getId();
+            
+
+        $deletePostRequest = "DELETE FROM ".$this->tableName." 
                 WHERE id_post = :id";
 
-                DAO::delete($sql, ['id' => $id]);
+                DAO::delete($deletePostRequest, ['id' => $id]);
+                
 
-        $postManager = new PostManager();
-        $topicId = 85;
-
-        $sql = "SELECT COUNT(*) AS post_count 
+        $countPostRequest = "SELECT COUNT(*) AS post_count 
                 FROM ".$this->tableName."
                 WHERE topic_id = :topicId";
 
         
+        $nbrPost = DAO::select($countPostRequest, ['topicId' => $topicId], false);
+        
+            if (intval($nbrPost['post_count']) == 0)
+            {
+                $topicManager = new topicManager();
+                $topicManager->topicDeleter($topicId);
+            }
+        
+            return $nbrPost;
         }
 
 

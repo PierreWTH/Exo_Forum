@@ -132,7 +132,7 @@
 
                     else 
                     {
-                        $_SESSION['error'] = "Votre mot de passe est incorrect. ";
+                        $_SESSION['error'] = "Votre mail est incorrect. ";
                        
                     }
 

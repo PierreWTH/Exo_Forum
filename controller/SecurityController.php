@@ -99,7 +99,7 @@
             $userManager = new UserManager();
             // Verification de l'envoi du form
             if (isset($_POST['submitSignUp']))
-            var_dump($_POST);
+            
             {   
                 // Epuration des variables
                 $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -149,7 +149,7 @@
             $this->redirectTo("security", "loginView");
         }
 
-        // Se déconnecter
+        // Se déconnecter A MODIFIER POUR METTRE USER UNSET setUSER = NULL
         public function logout()
         {
             session_destroy();
@@ -161,7 +161,16 @@
         {
             $userManager = new UserManager;
 
-            $userManager->userBanner();
+            if (isset($_POST['submitBan']))
+            {
+                $level = filter_input(INPUT_POST, "level", FILTER_SANITIZE_NUMBER_INT);
+                $id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT);
+                
+                if($level && $id)
+                {
+                    $userManager->userBanner($id, $level);
+                }
+            }
 
         }
 

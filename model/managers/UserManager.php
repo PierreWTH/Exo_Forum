@@ -63,4 +63,14 @@
            
         }
 
+        public function avatarAdder($id, $avatar)
+        {
+            $sql = "UPDATE user
+            SET avatar = :avatar
+            WHERE id_user = :id";
+
+                DAO::update($sql, ['avatar' => $avatar, 'id' => $id], false);
+           
+        }
+
     }

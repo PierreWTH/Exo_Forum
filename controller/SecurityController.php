@@ -199,4 +199,24 @@
 
         }
 
+        public function addAvatar($id)
+        {
+            $userManager = new UserManager;
+
+            if (isset($_POST['submitAvatar']))
+            {   
+                
+                $avatar = filter_input(INPUT_POST, "avatar", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                
+                if($avatar)
+                {
+                    $userManager->avatarAdder($id, $avatar);
+                    $this->redirectTo("security", "profile");
+
+                
+                }
+            }
+
+        }
+
     }

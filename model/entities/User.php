@@ -13,6 +13,7 @@
         private $role;
         private $email;
         private $banStatus;
+        private $avatar;
 
         public function __construct($data){         
             $this->hydrate($data);        
@@ -125,6 +126,26 @@
         public function setBanStatus($banStatus)
         {
                 $this->banStatus = $banStatus;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of avatar
+         */ 
+        public function getAvatar()
+        {
+                return $this->avatar;
+        }
+
+        /**
+         * Set the value of avatar
+         *
+         * @return  self
+         */ 
+        public function setAvatar($avatar)
+        {
+                $this->avatar = $avatar;
 
                 return $this;
         }

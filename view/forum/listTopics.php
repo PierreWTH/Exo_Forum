@@ -4,13 +4,13 @@ $topics = $result["data"]['topics'];
 $categories = $result["data"]['categories'];
 ?>
 
-<h1>Liste topics</h1>
+<h1>Tous les topics </h1>
 
 <?php
 foreach($topics as $topic ){
 
     ?>
-    <p><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?><a>  / <?=$topic->getUser()->getPseudo()?> / <?=$topic->getDateCreationTopic()?> 
+    <p><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?></a>  / <?=$topic->getUser()->getPseudo()?> / <?=$topic->getDateCreationTopic()?> 
     <?php
 
  if (App\Session::isAdmin() || App\Session::getUser() == $topic->getUser()){ ?>

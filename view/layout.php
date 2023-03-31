@@ -23,7 +23,7 @@
                         <?php
                         if(App\Session::isAdmin()){
                             ?>
-                            <a href="index.php?ctrl=home&action=users">Liste des utilisateurs</a>
+                            <a href="index.php?ctrl=home&action=users" class= "a-liste-user">Liste des utilisateurs</a>
                           
                             <?php
                         }

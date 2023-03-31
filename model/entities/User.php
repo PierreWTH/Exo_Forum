@@ -130,19 +130,13 @@
                 return $this;
         }
 
-        /**
-         * Get the value of avatar
-         */ 
+        // Get value of avatar
         public function getAvatar()
         {
                 return $this->avatar;
         }
 
-        /**
-         * Set the value of avatar
-         *
-         * @return  self
-         */ 
+        // Set value of avatar
         public function setAvatar($avatar)
         {
                 $this->avatar = $avatar;

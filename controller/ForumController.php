@@ -54,6 +54,7 @@
             ];
         }
 
+        // Lister les Posts d'un topic qui est dans une catégorie
         public function listPostsByTopicCategorie($id)
         {
             $postManager = new postManager();
@@ -67,8 +68,7 @@
             ];
         }
 
-        // Fonction pour lister les topics d'une catégorie
-
+        //ister les topics d'une catégories
         public function listCategorieTopics($id)
         {   
             $categorieManager = new CategorieManager();
@@ -83,6 +83,7 @@
             ];
         }
 
+        // Ajouter un topic
         public function addTopic()
         {   
 
@@ -223,6 +224,7 @@
     
         }
 
+        // Supprimer un post qui est dans un topic listé par catégorie
         public function deletePostByCat($id)
         
         {  if (isset($_SESSION['user']))
@@ -271,6 +273,27 @@
             else 
             {
                 $this->redirectTo("forum", "listPosts", $topicId);
+            }
+        }
+
+        // Supprimer un topic d'une catégorie 
+        public function deleteTopicByCategorie($id)
+        
+        {  
+            if (isset($_SESSION['user']))
+            {
+
+            $topicManager = new topicManager();
+
+            $categorieId = $topicManager->findOneByid($id)->getCategorie()->getId();
+
+            $topicManager-> topicDeleter($id);
+            
+            $this->redirectTo("forum", "listCategorieTopics", $categorieId);
+            }
+            else 
+            {
+                $this->redirectTo("forum", "listTopics");
             }
         }
     

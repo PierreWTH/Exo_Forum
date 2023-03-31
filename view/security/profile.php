@@ -1,9 +1,8 @@
 <H1> MON PROFIL </h1>
 
-
-
 <?php 
 
+// Si la personne n'a pas d'avatar
 if (App\Session::getUser()->getAvatar() == NULL)
 {?>
 
@@ -16,6 +15,7 @@ if (App\Session::getUser()->getAvatar() == NULL)
 
 <?php }
 
+// Si la personne a déja un avatar
 else {
     
 ?>
@@ -27,6 +27,8 @@ else {
     <input type="submit" name = "submitAvatar" value ="Modifier l'avatar"> 
 </form>
 <?php }?>
+
+<!-- Afficher infos -->
 
 <p> Pseudo : <?= App\Session::getUser()->getPseudo()?> </p>
 <p> Adresse mail : <?= App\Session::getUser()->getEmail()?> </p>

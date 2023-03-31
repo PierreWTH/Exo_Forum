@@ -14,7 +14,7 @@
             parent::connect();
         }
 
-
+        // Retrouver un user en passant par son mail 
         public function findOneByEmail($email)
         {
             $sql = "SELECT *
@@ -27,6 +27,7 @@
             );
         }
 
+        // Retrouver un user par son pseudo
         public function findOneByPseudo($pseudo)
         {
             $sql = "SELECT *
@@ -39,6 +40,7 @@
             );
         }
 
+        // Retrouver un mot de passe en passant par l'email
         public function retrievePassword($email)
         {
             $sql = "SELECT password
@@ -53,6 +55,7 @@
 
         }
 
+        // Bannir un utilisateur 
         public function userBanner($id, $level)
         {
             $sql = "UPDATE user
@@ -63,6 +66,7 @@
            
         }
 
+        // Ajouter un avatar
         public function avatarAdder($id, $avatar)
         {
             $sql = "UPDATE user

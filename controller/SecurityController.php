@@ -199,6 +199,7 @@
 
         }
 
+        // Ajouter un avatar
         public function addAvatar($id)
         {
             $userManager = new UserManager;

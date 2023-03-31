@@ -44,13 +44,15 @@ else
 foreach($topic_data as $topic ){
  
     ?>
-    <p><a href="index.php?ctrl=forum&action=listPostsByTopicCategorie&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?></a></p>
+    <p><a href="index.php?ctrl=forum&action=listPostsByTopicCategorie&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?></a>
     <?php
-}
 
-?>
+ if (App\Session::isAdmin() || App\Session::getUser() == $topic->getUser()){ ?>
 
-<?php
+    <button><a href = "index.php?ctrl=forum&action=deleteTopicByCategorie&id=<?=$topic->getId()?>">Supprimer</a></button></p>
+
+<?php } } 
+
 
     // Si l'utilisateur est connecté
     if (isset($_SESSION['user']))
@@ -76,5 +78,4 @@ foreach($topic_data as $topic ){
     <p>------------------------------------------------<p>
     <p> Vous devez être connecté pour ajouter un sujet <p>
 
-    <?php } 
-}?>
+    <?php } } ?>

@@ -15,6 +15,7 @@
             parent::connect();
         }
 
+        // Récuperer un topic a partir d'un post
         public function findPostsByTopic($id) 
         {
             $sql = "SELECT * 
@@ -29,6 +30,7 @@
             );
         }
 
+        // Supprimer un post
         public function postDeleter($id)
         {
 

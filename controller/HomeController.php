@@ -19,6 +19,7 @@
                 ];
             }
         
+        // redirection vers rules
         public function rules(){
         
         
@@ -26,7 +27,7 @@
                 "view" => VIEW_DIR."home/rules.php"
             ];
         }    
-
+        // redirection vers legal notice
         public function legalNotice(){
         
         
@@ -35,6 +36,7 @@
             ];
         }  
 
+        // Afficher la liste des utilisateurs
         public function users(){
             $this->restrictTo("admin");
 
@@ -49,12 +51,6 @@
             ];
         }
 
-        public function forumRules(){
-            
-            return [
-                "view" => VIEW_DIR."rules.php"
-            ];
-        }
 
         /*public function ajax(){
             $nb = $_GET['nb'];

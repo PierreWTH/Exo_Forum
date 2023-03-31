@@ -16,6 +16,7 @@
             parent::connect();
         }
 
+        // Lister les topics par catégorie
         public function listTopicsByCategorie($id) 
         {
             $sql = "SELECT * 
@@ -29,6 +30,7 @@
             );
         }
 
+        // Verouiller un topic
         public function topicLocker($id)
         {
         $sql = "UPDATE ".$this->tableName." 
@@ -40,6 +42,7 @@
         
         }
 
+        // Déverouiller un topic
         public function topicUnlocker($id)
         {
         $sql = "UPDATE ".$this->tableName." 
@@ -51,6 +54,7 @@
         
         }
 
+        // Supprimer un topic
         public function topicDeleter($id)
         {
         

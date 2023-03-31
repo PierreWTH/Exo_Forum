@@ -21,7 +21,7 @@
                 "view" => VIEW_DIR."forum/listTopics.php",
                 "data" => [
                     "categories" => $categorieManager->findAll(),
-                    "topics" => $topicManager->findAll(["dateCreationTopic", "DESC"])
+                    "topics" => $topicManager->listTopicsAndCount()
                 ]
 
             ];

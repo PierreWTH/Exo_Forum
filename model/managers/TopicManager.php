@@ -19,9 +19,12 @@
         // Lister les topics par catégorie
         public function listTopicsByCategorie($id) 
         {
-            $sql = "SELECT * 
+            $sql = "SELECT t.*, COUNT(p.id_post) as nbPosts 
                     FROM ".$this->tableName." t
-                    WHERE t.categorie_id = :id";
+                    LEFT JOIN post p on t.id_". $this->tableName . " = p.topic_id
+                    WHERE t.categorie_id = :id
+                    GROUP BY t.id_".$this->tableName ."
+                    ORDER BY dateCreationTopic DESC";
 
 
             return $this->getMultipleResults(
@@ -70,5 +73,4 @@
         
         }
 
-
-    }
+}       

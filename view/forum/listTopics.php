@@ -10,7 +10,7 @@ $categories = $result["data"]['categories'];
 foreach($topics as $topic ){
 
     ?>
-    <p><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?></a>  / <?=$topic->getUser()->getPseudo()?> / <?=$topic->getDateCreationTopic()?> 
+    <p><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?></a>  / <?=$topic->getUser()->getPseudo()?> / <?=$topic->getDateCreationTopic()?> / <?=$topic->getNbPosts()?>
     <?php
 
  if (App\Session::isAdmin() || App\Session::getUser() == $topic->getUser()){ ?>

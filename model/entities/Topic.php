@@ -11,6 +11,7 @@
         private $dateCreationTopic;
         private $user;
         private $categorie;
+        private $nbPosts;
 
         public function __construct($data){         
             $this->hydrate($data);        
@@ -96,6 +97,26 @@
         public function setCategorie($categorie)
         {
                 $this->categorie = $categorie;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of nbPosts
+         */ 
+        public function getNbPosts()
+        {
+                return $this->nbPosts;
+        }
+
+        /**
+         * Set the value of nbPosts
+         *
+         * @return  self
+         */ 
+        public function setNbPosts($nbPosts)
+        {
+                $this->nbPosts = $nbPosts;
 
                 return $this;
         }

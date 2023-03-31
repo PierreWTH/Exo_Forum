@@ -13,6 +13,7 @@ main{
     background: rgb(255,227,243);
     background: linear-gradient(0deg, rgba(255,227,243,1) 0%, rgba(208,229,255,1) 100%);
     min-height: 90vh;
+    padding-top: 50px;
 }
 
 h1, h2

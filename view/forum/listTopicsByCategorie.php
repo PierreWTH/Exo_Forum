@@ -44,7 +44,7 @@ else
 foreach($topic_data as $topic ){
  
     ?>
-    <p><a href="index.php?ctrl=forum&action=listPostsByTopicCategorie&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?></a>
+    <p><a href="index.php?ctrl=forum&action=listPostsByTopicCategorie&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?></a>  Posts : <?=$topic->getnbPosts()?>
     <?php
 
  if (App\Session::isAdmin() || App\Session::getUser() == $topic->getUser()){ ?>

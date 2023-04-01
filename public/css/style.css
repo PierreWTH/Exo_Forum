@@ -29,7 +29,7 @@ a {
 }
 
 a:hover{
-    color: #e5deee
+    color: #c8bbda
 }
 
 p {
@@ -43,7 +43,7 @@ nav
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0px;
+    height: 70px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
@@ -56,9 +56,9 @@ nav
 #forum-logo {
     background-color: #f6edf7;
     font-family: 'Poppins';
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 600;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border-radius: 10px;
     margin: 0px 10px;
 }
@@ -134,7 +134,7 @@ th i {
 /* form */
 
 .add-topic-form{
-    margin-top: 50px;
+    margin: 50px 0px;
     background-color: white;
     border-radius: 10px;
 
@@ -196,7 +196,12 @@ th i {
     height: 130px
 }
 
-/* LOGIN */
+.security-p-topics{
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+/* LOGIN & REGISTER */
 
 .security-page{
     display: flex;
@@ -244,4 +249,47 @@ th i {
     font-size: 13px;
 }
 
-/*
+/*CATEGORIES*/
+
+#categories-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-categories{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.list-categories h1{
+    text-align: center;
+}
+
+.list-categories p{
+    font-size: 30px;
+    margin: 15px 0px;
+    background-color: #f6edf7;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.list-categories a {
+    font-size: 25px;
+}
+
+
+/*FOOTER*/
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    gap: 40px;
+}

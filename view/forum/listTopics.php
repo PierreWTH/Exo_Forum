@@ -45,7 +45,7 @@ $categories = $result["data"]['categories'];
             <td class="td-topic-details"><?=$topic->getNbPosts()?></td>
         
         
-    </div>
+    
             <?php
     
         if (App\Session::isAdmin() || App\Session::getUser() == $topic->getUser()){ ?>
@@ -56,23 +56,23 @@ $categories = $result["data"]['categories'];
             </tr>
         </tbody>
     </table>
-    
+    </div>
     
         <?php
 
         if ((!isset($_SESSION['user']))) 
         {
             ?>
-            <p>------------------------------------------------</p>
-            <p> Vous devez être connecté pour ajouter un sujet</p>
+
+            <p class = "security-p-topics"> Vous devez être connecté pour ajouter un sujet.</p>
         
         <?php } 
 
         elseif (App\Session::getUser()->getBanStatus() == 3 || App\Session::getUser()->getBanStatus() == 2) 
         {
             ?>
-            <p>------------------------------------------------</p>
-            <p>Vous avec un banissement léger ou moyen, vous ne pouvez pas poster de topics. </p>
+
+            <p class = "security-p-topics">Vous avec un banissement léger ou moyen, vous ne pouvez pas poster de topics. </p>
 
 
         
@@ -82,7 +82,6 @@ $categories = $result["data"]['categories'];
 
     else 
     {?>
-    </div>
 
     <div class = "add-topic-form">
         <div class="form-add-topic-top">

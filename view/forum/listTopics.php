@@ -15,15 +15,16 @@ $categories = $result["data"]['categories'];
     <table>
         <thead>
             <tr>
-                <th class="th-topic-details"> Sujet </th>
+                <th></th>
                 <th class="th-topic-details"> Auteur </th>
-                <th class="th-topic-details"> Date</th>
-                <th class="th-topic-details">Posts</th>
+                <th class="th-topic-details"> Pseudo</th>
+                <th class="th-topic-details">Date</th>
+                <th class="th-topic-details"><i class="fa-regular fa-comment-dots"></i></th>
                 <?php
                 if (isset($_SESSION['user'])){
                 if (App\Session::isAdmin()){?>
 
-                <th class="th-topic-details">Supprimer</th>
+                <th class="th-topic-details">Gérer</th>
                 
                 <?php }}?>
             </tr>
@@ -32,7 +33,12 @@ $categories = $result["data"]['categories'];
         <?php
         foreach($topics as $topic ){?>
         <tr>
-            <td><i class="fa-light fa-messages"></i></td>
+            <?php if($topic->getLocked() == 0){?>
+            <td><i class="fa-regular fa-message"></i></td>
+            <?php } 
+            else{ ?>
+            <td><i class="fa-solid fa-lock"></i></td>
+            <?php } ?>
             <td class="td-topic-details"><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?></a></td>
             <td class="td-topic-details"><?=$topic->getUser()->getPseudo()?></td>
             <td class="td-topic-details"><?=$topic->getDateCreationTopic()?></td>
@@ -44,7 +50,7 @@ $categories = $result["data"]['categories'];
     
         if (App\Session::isAdmin() || App\Session::getUser() == $topic->getUser()){ ?>
 
-            <td><button><a href = "index.php?ctrl=forum&action=deleteTopic&id=<?=$topic->getId()?>">Supprimer</a></button></td>
+            <td class="td-topic-details"><a href = "index.php?ctrl=forum&action=deleteTopic&id=<?=$topic->getId()?>"><i class="fa-regular fa-trash-can"></i></a></td>
         
         <?php } } ?>
             </tr>

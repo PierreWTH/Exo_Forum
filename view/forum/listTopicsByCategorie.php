@@ -1,3 +1,5 @@
+<div id = list-topics>
+
 <?php
 
 $topics = $result["data"]['topics'];
@@ -15,45 +17,84 @@ if (!empty($topics)){
 if (empty($topics)&& !isset($_SESSION['user']))
 {?>
     <p> Cette catégorie ne comporte pas encore de topic. <p>
-    <p> -------------------------------------------------<p>
     <p> Vous devez être connecté pour ajouter un topic. <p>
     
     <?php }
 // Si il n'y a pas de topic dans la catégorie et que le user est co
 else if (empty($topics) && isset($_SESSION['user']))
 {?>
-    <p> Cette catégorie ne comporte pas encore de topic. <p>
+    <p class ="security-p-topics"> Cette catégorie ne comporte pas encore de topic. <p>
 
-    <h2>Ajouter un sujet</h2>
+<div class = "add-topic-form">
+    <div class = form-add-topic-top>
+    <h2 class = add-topic-h2>Ajouter un sujet</h2>
 
     <form action="index.php?ctrl=forum&action=addTopic" method = "post" >
         <input type = "text" name = "nomTopic" placeholder = "Entrez le titre">
-        <input type = "textarea" name = "texte" placeholder = "Votre message">
+        
         <input type="hidden" name="categorie_id" value= "<?=$categorieId?>">   
     
         <input type="submit" name = "submit" value="Ajouter à la catégorie">
-    </form>  
+     
+    </div> 
+    <textarea class = "form-add-topic-textarea" name = "texte" placeholder = "Votre message..." rows = "5" cols = "150"></textarea>
+    </form>
+</div>
 <?php }
 // Si il ya des topics dans la catégorie
 else 
 { ?>
-
+<div class = "titre-page">
 <h1><?= $categorie ?></h1>
+</div>
+<div class = "topic-list-details">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th class="th-topic-details"> Auteur </th>
+                <th class="th-topic-details"> Pseudo</th>
+                <th class="th-topic-details">Date</th>
+                <th class="th-topic-details"><i class="fa-regular fa-comment-dots"></i></th>
+                <?php
+                if (isset($_SESSION['user'])){
+                if (App\Session::isAdmin()){?>
+
+                <th class="th-topic-details">Gérer</th>
+                
+                <?php }}?>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+        foreach($topic_data as $topic ){?>
+        <tr>
+            <?php if($topic->getLocked() == 0){?>
+            <td><i class="fa-regular fa-message"></i></td>
+            <?php } 
+            else{ ?>
+            <td><i class="fa-solid fa-lock"></i></td>
+            <?php } ?>
+            <td class="td-topic-details"><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?></a></td>
+            <td class="td-topic-details"><?=$topic->getUser()->getPseudo()?></td>
+            <td class="td-topic-details"><?=$topic->getDateCreationTopic()?></td>
+            <td class="td-topic-details"><?=$topic->getNbPosts()?></td>
+        
+        
+    
+            <?php
+    
+        if (App\Session::isAdmin() || App\Session::getUser() == $topic->getUser()){ ?>
+
+            <td class="td-topic-details"><a href = "index.php?ctrl=forum&action=deleteTopic&id=<?=$topic->getId()?>"><i class="fa-regular fa-trash-can"></i></a></td>
+        
+        <?php } } ?>
+            </tr>
+        </tbody>
+    </table>
+    </div>
 
 <?php
-foreach($topic_data as $topic ){
- 
-    ?>
-    <p><a href="index.php?ctrl=forum&action=listPostsByTopicCategorie&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?></a>  Posts : <?=$topic->getnbPosts()?>
-    <?php
-
- if (App\Session::isAdmin() || App\Session::getUser() == $topic->getUser()){ ?>
-
-    <button><a href = "index.php?ctrl=forum&action=deleteTopicByCategorie&id=<?=$topic->getId()?>">Supprimer</a></button></p>
-
-<?php } } 
-
-
     // Si l'utilisateur est connecté
     if (isset($_SESSION['user']))
     {
@@ -61,21 +102,28 @@ foreach($topic_data as $topic ){
     ?>
     <!--Formulaire ajout de topic -->
 
-    <h2>Ajouter un sujet</h2>
+    <div class = "add-topic-form">
+        <div class = form-add-topic-top>
+        <h2 class = add-topic-h2>Ajouter un sujet</h2>
 
-    <form action="index.php?ctrl=forum&action=addTopic" method = "post" >
-        <input type = "text" name = "nomTopic" placeholder = "Entrez le titre">
-        <input type = "textarea" name = "texte" placeholder = "Votre message">
-        <input type="hidden" name="categorie_id" value= "<?=$categorieId?>">   
-
-        <input type="submit" name = "submit" value="Ajouter à la catégorie">
-    </form>
+        <form action="index.php?ctrl=forum&action=addTopic" method = "post" >
+            <input type = "text" name = "nomTopic" placeholder = "Entrez le titre">
+            
+            <input type="hidden" name="categorie_id" value= "<?=$categorieId?>">   
+        
+            <input type="submit" name = "submit" value="Ajouter à la catégorie">
+        
+        </div> 
+        <textarea class = "form-add-topic-textarea" name = "texte" placeholder = "Votre message..." rows = "5" cols = "150"></textarea>
+        </form>
+    </div>
     
     <?php } 
     // Affichage d'un message si user pas connecté
     else 
     {?>
-    <p>------------------------------------------------<p>
-    <p> Vous devez être connecté pour ajouter un sujet <p>
+    <p class = "security-p-topics"> Vous devez être connecté pour ajouter un sujet <p>
 
     <?php } } ?>
+
+</div>

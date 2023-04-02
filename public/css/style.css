@@ -77,6 +77,35 @@ nav
     border-radius: 5px;
 }
 
+/* HOME */
+
+#forum-home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenu-home{
+    background-color: white;
+    margin: auto;
+    width: 700px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.home-login-links{
+    margin-top: 50px;
+}
+
+.home-login-links a {
+
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
 /* LIST TOPICS */
 
 #list-topics{

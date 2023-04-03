@@ -45,9 +45,7 @@ nav
     justify-content: space-between;
     align-items: center;
     height: 70px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-
 .nav-left{
     display: flex;
     align-items: center;
@@ -84,6 +82,55 @@ nav
     border-radius: 5px;
 }
 
+@media screen and (max-width: 800px) {
+nav {
+    display: none;
+}
+}
+
+/* Style the navigation menu */
+.topnav {
+    overflow: hidden;
+    background-color: white;
+    position: relative;
+    font-family: "Poppins";
+    display: none;
+  }
+  
+  /* Hide the links inside the navigation menu (except for logo/home) */
+  .topnav #myLinks {
+    display: none;
+  }
+  
+  /* Style navigation menu links */
+  .topnav a {
+    color: black;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+  
+  /* Style the hamburger menu */
+  .topnav a.icon {
+    background: white;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  /* Add a grey background color on mouse-over */
+  .topnav a:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  /* Style the active link (or home/logo) */
+  .active {
+    background-color: white;
+    color: white;
+  }
 /* HOME */
 
 #forum-home{
@@ -113,6 +160,15 @@ nav
 
 }
 
+@media screen and (max-width: 900px) {
+    nav {
+        display: none;
+    }
+
+    .topnav {
+        display: block;
+    }
+    }
 /* LIST TOPICS & LIST TOPICS BY CATEGORIES*/
 
 #list-topics{
@@ -132,6 +188,13 @@ nav
     font-size: 15px;
     margin-bottom: 50px;
     text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+@media screen and (max-width: 800px) {
+    .titre-page{
+        padding: 8px 20px;
+    }
 }
 
 /* Liste des topics */
@@ -143,6 +206,7 @@ nav
     padding: 20px;
     
     
+    
 }
 
 .th-topic-details{
@@ -150,7 +214,7 @@ nav
     background-color: #f6edf7;
 }
 
-.td-topic-details{
+.td-topic-details, .td-topic-details1{
     padding: 10px;
     text-align: center;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
@@ -175,6 +239,7 @@ th i {
     margin: 50px 0px;
     background-color: white;
     border-radius: 10px;
+    
 
 }
 
@@ -208,6 +273,8 @@ th i {
     ;
 }
 
+
+
 .form-select-category{
     font-family: "Poppins";
     border: 0px;
@@ -231,8 +298,35 @@ th i {
     margin : 0px 8px 8px 8px;
     width: 745px;
     resize: vertical;
-    line-height: 1.5;
     height: 130px
+}
+
+
+
+@media screen and (max-width: 800px) {
+
+    #list-topics input[type="text"]{
+        width: 100px;
+    }
+        .topic-list-details{
+            padding: 0px;
+    }
+    .form-add-topic-textarea{
+        max-width: 100%;
+        margin: 0px;
+    }
+
+    .add-topic-form{
+        border-radius: 10px 10px 0px 0px;
+        max-width: 80%;
+    
+    }
+
+    #list-topics input[type="text"]{
+        width: 100%;
+        margin-top: 8px
+        ;
+    }
 }
 
 .security-p-topics{
@@ -380,6 +474,12 @@ th i {
     margin-bottom: 20px;
 }
 
+@media screen and (max-width: 800px) {
+    #list-posts-page{
+        padding: 10px
+    }
+}
+
 /*LISTE DES UTILISATEURS */
 
 .user-list-page{
@@ -441,14 +541,17 @@ margin: 20px 0px;
 .profile-page{
     display: flex;
     justify-content: center;
+    
     flex-direction: column;
     align-items: center;
-    width: 60%;
+    max-width: 60%;
     margin: auto;
 }
 
 .contenu-profile{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     gap: 50px;
     background-color: white;
@@ -456,11 +559,30 @@ margin: 20px 0px;
     border-radius: 10px;
 }
 
+
+
 .contenu-profile input[type="text"]{
    border: 0px;
    background-color: #f7f7f7;
    padding: 6px;
    font-family: "Poppins";
+}
+
+.avatar {
+    height: auto;
+    width: 500px;
+}
+
+@media screen and (max-width: 800px) {
+    .contenu-profile{
+        width: 300px;
+        
+    }
+    .avatar {
+        height: auto;
+        width: 250px;
+        margin-bottom: 20px;
+    }
 }
 /*FOOTER*/
 
@@ -472,3 +594,33 @@ footer{
     gap: 40px;
 }
 
+
+
+@media (max-width: 700px){
+
+    .responsive-table thead {
+    display: none; 
+    }
+    
+    .responsive-table tr{
+    display: block;
+    margin-bottom: 40px;
+    }
+    
+    .responsive-table td {
+    display: block;
+    text-align: center;
+    }
+    
+    .responsive-table td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    }
+
+    .td-topic-details{
+        padding : 3px;
+    }
+
+   
+    }

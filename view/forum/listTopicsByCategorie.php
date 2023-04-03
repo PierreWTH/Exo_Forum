@@ -48,7 +48,7 @@ else
 <h1><?= $categorie ?></h1>
 </div>
 <div class = "topic-list-details">
-    <table>
+    <table class = "responsive-table">
         <thead>
             <tr>
                 <th class="th-topic-details"></th>

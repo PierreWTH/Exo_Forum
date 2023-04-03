@@ -112,8 +112,9 @@ else
     
             <input type="submit" name = "submit" value="Poster" class = "form-add-topic-submit">
         </div>
+        <div class = "textearea-add-post">
             <textarea class = "form-add-topic-textarea" name = "texte" placeholder = "Votre message..." rows = "5" cols = "150"></textarea>
-            
+            </div>
         </form>
     </div>
 </div>

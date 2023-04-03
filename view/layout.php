@@ -52,7 +52,48 @@
                         
                     ?>
                     </div>
-                </nav>
+                    </nav>
+                     <!-- Top Navigation Menu -->
+                    <div class="topnav">
+                    <a href="#home" class="active">FORUM</a>
+                    <!-- Navigation links (hidden by default) -->
+                    <div id="myLinks">
+                    <?php
+                        
+                        if(App\Session::getUser()){
+                            ?>
+                            <a href="index.php?ctrl=forum&action=listTopics">Tous les topics</a>
+                            <a href="index.php?ctrl=forum&action=listCategories">Catégories</a>
+                            <a href="index.php?ctrl=security&action=profile" ><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()->getPseudo()?></a>
+                            <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
+                            <?php
+
+                            if(App\Session::isAdmin()){
+                                ?>
+                                <a href="index.php?ctrl=home&action=users" class= "a-liste-user">Liste des utilisateurs</a>
+                              
+                                <?php
+                            }
+                            
+                        }
+                        else{
+                            ?>
+                            <a href="index.php?ctrl=forum&action=listTopics">Tous les topics</a>
+                            <a href="index.php?ctrl=forum&action=listCategories">Catégories</a>
+                            <a href="index.php?ctrl=security&action=loginView">Connexion</a>
+                            <a href="index.php?ctrl=security&action=index">Inscription</a>
+                        <?php
+                        }
+                   
+                        
+                    ?>
+                    </div>
+                    <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    </div>
+                
             </header>
             
             <main id="forum">
@@ -113,5 +154,15 @@
             )
         })*/
     </script>
+    <script>
+        function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+        </script>
 </body>
 </html>

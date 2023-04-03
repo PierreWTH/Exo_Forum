@@ -216,6 +216,10 @@
 
                 
                 }
+                else
+                {
+                    $this->redirectTo("security", "profile");
+                }
             }
 
         }

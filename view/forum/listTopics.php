@@ -12,7 +12,7 @@ $categories = $result["data"]['categories'];
     </div>
 
     <div class = "topic-list-details">
-    <table>
+    <table class = "responsive-table">
         <thead>
             <tr>
                 <th class="th-topic-details"></th>
@@ -102,9 +102,9 @@ $categories = $result["data"]['categories'];
                 </select>
                 <input type="submit" name = "submit" value="Ajouter" class = "form-add-topic-submit">
         </div>
-                
+                <div>
                 <textarea class = "form-add-topic-textarea" name = "texte" placeholder = "Votre message..." rows = "5" cols = "150"></textarea>
-                
+                </div>
                 
             </form>
         </div>

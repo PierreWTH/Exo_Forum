@@ -26,7 +26,7 @@ else {
     
 ?>
 
-<img src=<?=App\Session::getUser()->getAvatar()?>></img>
+<img src=<?=App\Session::getUser()->getAvatar()?> class = "avatar"></img>
 
 <form action = "index.php?ctrl=security&action=addAvatar&id=<?= App\Session::getUser()->getId() ?>" method = "post" >
     <input type="text" name = "avatar" placeholder = "Lien photo..." class = "form-input-avatar">

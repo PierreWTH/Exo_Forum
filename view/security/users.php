@@ -19,7 +19,7 @@ $users = $result["data"]['users'];
 </div>
 
 <div class = "topic-list-details">
-<table>
+<table class = "responsive-table">
         <thead>
             <tr>
                 <th class="th-topic-details"> Pseudo </th>

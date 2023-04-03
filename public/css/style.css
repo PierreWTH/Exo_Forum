@@ -208,9 +208,7 @@ nav {
     border-radius: 10px;
     font-family: 'Poppins';
     margin-bottom: 50px;
-   
-    
-    
+    padding: 50px;
     
 }
 
@@ -348,6 +346,7 @@ th i {
 .background-table{
     background-color: black;
 }
+
 
 @media (max-width: 850px){
 

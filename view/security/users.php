@@ -10,12 +10,12 @@ $users = $result["data"]['users'];
 <div class ="ban-level-legend">
 <p class ="ban-level-title"> Niveau des bans : </p>
 
-<ul>
-    <li> <i class="fa-regular fa-circle-check"></i> : rien a signaler </li>
-    <li> <i class="fa-solid fa-circle-half-stroke"></i> : plus le droit de poster de topics. </li>
-    <li> <i class="fa-solid fa-circle"></i> : plus le droit de poster de topics ni de messages. </li>
-    <li><i class="fa-solid fa-circle-xmark"></i> : plus le droit de se connecter. </li>
-</ul>
+
+    <p> <i class="fa-regular fa-circle-check"></i> : rien a signaler </p>
+    <p> <i class="fa-solid fa-circle-half-stroke"></i> : plus le droit de poster de topics. </p>
+    <p> <i class="fa-solid fa-circle"></i> : plus le droit de poster de topics ni de messages. </p>
+    <p><i class="fa-solid fa-circle-xmark"></i> : plus le droit de se connecter. </p>
+
 </div>
 
 <div class = "topic-list-details">

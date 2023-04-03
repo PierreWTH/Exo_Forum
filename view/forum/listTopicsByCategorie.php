@@ -30,11 +30,11 @@ else if (empty($topics) && isset($_SESSION['user']))
     <h2 class = add-topic-h2>Ajouter un sujet</h2>
 
     <form action="index.php?ctrl=forum&action=addTopic" method = "post" >
-        <input type = "text" name = "nomTopic" placeholder = "Entrez le titre">
+        <input class = "form-input-topic-title"type = "text" name = "nomTopic" placeholder = "Entrez le titre">
         
         <input type="hidden" name="categorie_id" value= "<?=$categorieId?>">   
     
-        <input type="submit" name = "submit" value="Ajouter à la catégorie">
+        <input class = "form-add-topic-submit" type="submit" name = "submit" value="Ajouter à la catégorie">
      
     </div> 
     <textarea class = "form-add-topic-textarea" name = "texte" placeholder = "Votre message..." rows = "5" cols = "150"></textarea>
@@ -51,7 +51,7 @@ else
     <table>
         <thead>
             <tr>
-                <th></th>
+                <th class="th-topic-details"></th>
                 <th class="th-topic-details"> Auteur </th>
                 <th class="th-topic-details"> Pseudo</th>
                 <th class="th-topic-details">Date</th>

@@ -6,7 +6,8 @@
 /* GENERAL */
 
 * {
-    margin : 0
+    margin : 0;
+    box-sizing: border-box;
 }
 
 main{
@@ -106,7 +107,7 @@ nav
 
 }
 
-/* LIST TOPICS */
+/* LIST TOPICS & LIST TOPICS BY CATEGORIES*/
 
 #list-topics{
     display: flex;
@@ -124,6 +125,7 @@ nav
     border-radius: 10px;
     font-size: 15px;
     margin-bottom: 50px;
+    text-align: center;
 }
 
 /* Liste des topics */
@@ -173,15 +175,15 @@ th i {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-start;
-    gap: 5px;
+    justify-content: space-between;
+    
+    margin: 5px ;
 }
 
 .add-topic-h2{
     background-color: #f6edf7;
     padding: 5px;
     font-size: 20px;
-    margin: 8px;
     border-radius: 5px;
 }
 
@@ -195,7 +197,8 @@ th i {
 }
 
 #list-topics input[type="text"]{
-    min-width: 400px;
+    width: 410px
+    ;
 }
 
 .form-select-category{
@@ -228,6 +231,7 @@ th i {
 .security-p-topics{
     margin-top: 30px;
     font-size: 20px;
+    text-align: center;
 }
 
 /* LOGIN & REGISTER */
@@ -313,6 +317,62 @@ th i {
 }
 
 
+/* LIST POSTS*/
+
+#list-posts-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    max-width: 761px;
+
+}
+
+.body-message{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+}
+
+.message-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-user-avatar{
+    height: 20px;
+    width: 20px;
+}
+
+.post-text{
+    font-family: "Poppins";
+    
+}
+
+.user-info-background{
+    background-color: #f6edf7;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.form-add-post-top{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2px 8px;
+    
+}
+
+.lock-topic{
+    margin-bottom: 20px;
+}
+
 /*FOOTER*/
 
 footer{
@@ -322,3 +382,4 @@ footer{
     height: 50px;
     gap: 40px;
 }
+

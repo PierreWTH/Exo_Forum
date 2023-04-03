@@ -15,7 +15,7 @@ $categories = $result["data"]['categories'];
     <table>
         <thead>
             <tr>
-                <th></th>
+                <th class="th-topic-details"></th>
                 <th class="th-topic-details"> Auteur </th>
                 <th class="th-topic-details"> Pseudo</th>
                 <th class="th-topic-details">Date</th>

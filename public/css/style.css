@@ -35,6 +35,7 @@ a:hover{
 
 p {
     font-family: 'Poppins';
+    font-weight: 200;
 }
 
 /* NAVBAR */
@@ -82,7 +83,7 @@ nav
     border-radius: 5px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
 nav {
     display: none;
 }
@@ -138,12 +139,13 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 .contenu-home{
     background-color: white;
     margin: auto;
-    width: 700px;
+    max-width: 700px;
     padding: 20px;
     border-radius: 10px;
 }
@@ -160,7 +162,7 @@ nav {
 
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 850px) {
     nav {
         display: none;
     }
@@ -191,7 +193,7 @@ nav {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
     .titre-page{
         padding: 8px 20px;
     }
@@ -200,10 +202,13 @@ nav {
 /* Liste des topics */
 
 .topic-list-details{
+    display: flex;
+    justify-content: center;
     background-color: white;
     border-radius: 10px;
     font-family: 'Poppins';
-    padding: 20px;
+    margin-bottom: 50px;
+   
     
     
     
@@ -236,9 +241,10 @@ th i {
 /* form */
 
 .add-topic-form{
-    margin: 50px 0px;
+    margin: 50px auto;
     background-color: white;
     border-radius: 10px;
+   
     
 
 }
@@ -269,8 +275,7 @@ th i {
 }
 
 #list-topics input[type="text"]{
-    width: 410px
-    ;
+    width: 410px;
 }
 
 
@@ -303,7 +308,7 @@ th i {
 
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
 
     #list-topics input[type="text"]{
         width: 100px;
@@ -327,7 +332,12 @@ th i {
         margin-top: 8px
         ;
     }
-}
+    .add-topic-form{
+        padding: 0px 10px;
+        }
+
+    }
+
 
 .security-p-topics{
     margin-top: 30px;
@@ -335,6 +345,55 @@ th i {
     text-align: center;
 }
 
+.background-table{
+    background-color: black;
+}
+
+@media (max-width: 850px){
+
+    .responsive-table thead {
+    display: none; 
+    }
+    
+    .responsive-table tr{
+    display: block;
+    margin-bottom: 40px;
+    }
+    
+    .responsive-table .td-topic-details {
+    display: block;
+    text-align: center;
+    }
+    
+
+    .td-topic-details{
+        box-shadow: none;
+        padding: 5px;
+    }
+
+    .td-topic-details1{
+        display: none;
+        
+    }
+
+    .security-p-topics{
+        margin-bottom: 30px;
+        padding: 0px 20px;
+    }
+
+    td .fa-lock, .fa-message {
+        background-color: #f6edf7;
+        padding: 5px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+
+    }
+    
+    .bold-responsive{
+        font-weight: 600;
+    }
+  
+    }
 /* LOGIN & REGISTER */
 
 .security-page{
@@ -425,7 +484,7 @@ th i {
     flex-direction: column;
     justify-content: center;
     margin: auto;
-    max-width: 761px;
+    max-width: 760px;
 
 }
 
@@ -470,11 +529,13 @@ th i {
     
 }
 
+
+
 .lock-topic{
     margin-bottom: 20px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
     #list-posts-page{
         padding: 10px
     }
@@ -487,7 +548,7 @@ th i {
     flex-direction: column;
     justify-content: center;
     margin: auto;
-    width: 60%;
+    width: 80%;
 }
 
 .user-list-page ul {
@@ -497,6 +558,7 @@ th i {
 }
 
 .contenu-user-list{
+    text-align: center;
     background-color: white;
     padding: 20px;;
     border-radius: 10px;
@@ -504,7 +566,7 @@ th i {
 }
 
 .user-list{
-margin: 20px 0px;
+margin: 20px auto;
 }
 
 .fa-circle-check {
@@ -530,10 +592,15 @@ margin: 20px 0px;
 
 .ban-level-legend{
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .bold{
     font-weight: 600;
+}
+
+.background-user td{
+    background-color: black;
 }
 
 /* PROFILE*/
@@ -573,7 +640,7 @@ margin: 20px 0px;
     width: 500px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
     .contenu-profile{
         width: 300px;
         
@@ -594,33 +661,13 @@ footer{
     gap: 40px;
 }
 
-
-
 @media (max-width: 700px){
-
-    .responsive-table thead {
-    display: none; 
+    footer{
+        flex-direction: column;
+        height: 100%;
+        margin: 20px 0px;
+        gap: 10px;
     }
-    
-    .responsive-table tr{
-    display: block;
-    margin-bottom: 40px;
-    }
-    
-    .responsive-table td {
-    display: block;
-    text-align: center;
-    }
-    
-    .responsive-table td:before {
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    }
-
-    .td-topic-details{
-        padding : 3px;
-    }
+}
 
    
-    }

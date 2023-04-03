@@ -34,10 +34,10 @@ $users = $result["data"]['users'];
             foreach($users as $user ){?>
             <tr>
                 
-                    <td class="td-topic-details"><?=$user->getPseudo()?></td>
+                    <td class="td-topic-details"><span class = "bold-responsive"><?=$user->getPseudo()?></span></td>
                     <td class="td-topic-details"><?=$user->getDateInscription()?></td> 
                     <td class="td-topic-details"><?=$user->getEmail()?></td>
-                    <td class="td-topic-details">                
+                    <td class="td-topic-details">               
                 <?php 
                 // Afficher le statut de l'user
                 switch($user->getBanStatus())
@@ -61,6 +61,7 @@ $users = $result["data"]['users'];
                 
                 ?>
                 </td>
+                
             
     
     <!-- Formulaire de banissement -->
@@ -74,7 +75,6 @@ $users = $result["data"]['users'];
         <input type="submit" name = "submitBan" value="OK" class = "form-add-topic-submit">
     </form> </td>
 
-    
     <?php
 }
 

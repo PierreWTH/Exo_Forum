@@ -32,17 +32,18 @@ $categories = $result["data"]['categories'];
         <tbody>
         <?php
         foreach($topics as $topic ){?>
+        
         <tr>
             <?php if($topic->getLocked() == 0){?>
-            <td><i class="fa-regular fa-message"></i></td>
+            <td class="td-topic-details"><i class="fa-regular fa-message"></i></td>
             <?php } 
             else{ ?>
-            <td><i class="fa-solid fa-lock"></i></td>
+            <td class="td-topic-details"><i class="fa-solid fa-lock"></i></td>
             <?php } ?>
-            <td class="td-topic-details"><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><?=$topic->getNomTopic()?></a></td>
+            <td class="td-topic-details"><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><span class = "bold-responsive"><?=$topic->getNomTopic()?></span></a></td>
             <td class="td-topic-details"><?=$topic->getUser()->getPseudo()?></td>
-            <td class="td-topic-details"><?=$topic->getDateCreationTopic()?></td>
-            <td class="td-topic-details"><?=$topic->getNbPosts()?></td>
+            <td class="td-topic-details1"><?=$topic->getDateCreationTopic()?></td>
+            <td class="td-topic-details1"><?=$topic->getNbPosts()?></td>
         
         
     
@@ -54,6 +55,7 @@ $categories = $result["data"]['categories'];
         
         <?php } } ?>
             </tr>
+            
         </tbody>
     </table>
     </div>

@@ -55,7 +55,7 @@
                     </nav>
                      <!-- Top Navigation Menu -->
                     <div class="topnav">
-                    <a href="#home" class="active">FORUM</a>
+                    <a href="index.php?ctrl=home&action=index" class="active">FORUM</a>
                     <!-- Navigation links (hidden by default) -->
                     <div id="myLinks">
                     <?php

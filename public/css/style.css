@@ -142,6 +142,7 @@ nav
     font-family: 'Poppins';
     padding: 20px;
     
+    
 }
 
 .th-topic-details{
@@ -433,6 +434,33 @@ margin: 20px 0px;
 
 .bold{
     font-weight: 600;
+}
+
+/* PROFILE*/
+
+.profile-page{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+}
+
+.contenu-profile{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background-color: white;
+    padding : 30px;
+    border-radius: 10px;
+}
+
+.contenu-profile input[type="text"]{
+   border: 0px;
+   background-color: #f7f7f7;
+   padding: 6px;
+   font-family: "Poppins";
 }
 /*FOOTER*/
 

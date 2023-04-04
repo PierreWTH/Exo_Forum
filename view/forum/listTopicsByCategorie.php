@@ -76,7 +76,7 @@ else
             else{ ?>
             <td class="td-topic-details"><i class="fa-solid fa-lock"></i></td>
             <?php } ?>
-            <td class="td-topic-details"><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><span class = "bold-responsive"><?=$topic->getNomTopic()?></span></a></td>
+            <td class="td-topic-details"><a href="index.php?ctrl=forum&action=listPostsByTopicCategorie&id=<?=$topic->getId()?>"><span class = "bold-responsive"><?=$topic->getNomTopic()?></span></a></td>
             <td class="td-topic-details"><?=$topic->getUser()->getPseudo()?></td>
             <td class="td-topic-details1"><?=$topic->getDateCreationTopic()?></td>
             <td class="td-topic-details1"><?=$topic->getNbPosts()?></td>

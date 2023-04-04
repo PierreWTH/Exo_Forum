@@ -537,7 +537,10 @@ th i {
 }
 
 .update-textarea{
-    width: 400px;
+    width: 600px;
+    border: 0px;
+    font-family: "Poppins";
+    margin-bottom: 30px;
 }
 
 .form-update-post{
@@ -552,6 +555,13 @@ th i {
 .submit-update{
     display: flex;
     justify-content: center;
+}
+
+@media (max-width: 850px){
+    .update-textarea{
+        width: 280px;
+       
+    }
 }
 
 .lock-topic{

@@ -13,38 +13,67 @@ foreach($posts as $post ){
 }
 
 ?>
+<div id = "list-posts-page">
 
 <!-- Affichage données topics -->
+<div class = "titre-page">
+    <h1><?= $titre ?></h1>
+</div>
 
-<h1><?= $titre." - ".$date ?></h1>
-
+<div class = "lock-topic">
 <?php 
 if(App\Session::isAdmin())
 {?>
-<button><a href="index.php?ctrl=forum&action=lockTopic&id=<?=$topicId?>">Verouiller le topic</a></button>
+<button class = "form-add-topic-submit"><a href="index.php?ctrl=forum&action=lockTopic&id=<?=$topicId?>">Verouiller le topic</a></button>
 
 <?php
 
     if($locked == 1)
     {?>
-    <button><a href="index.php?ctrl=forum&action=unlockTopic&id=<?=$topicId?>">Dévérouiller le topic</a></button>
+    <button class = "form-add-topic-submit"><a href="index.php?ctrl=forum&action=unlockTopic&id=<?=$topicId?>">Dévérouiller le topic</a></button>
 
     <?php
     }
 }?>
+</div>
+
 
 <?php
 foreach($post_data as $post ){
     
     ?>
+    <div class = "body-message">
 
-    <p><?=$post->getUser()->getPseudo()?>    /    <?=$post->getTexte()?>     /     <?=$post->getDateCreationPost()?>
+        <div class = "message-info"> <p>
+            <span class = "user-info-background">
+            <?php if ($post->getUser()->getAvatar() != NULL){?>
+            <img class ="post-user-avatar" src="<?=$post->getUser()->getAvatar()?>" alt=""> <?php }
+            else {?>
+            <i class="fa-solid fa-user"></i>
+            <?php } ?>
+                <?=$post->getUser()->getPseudo()?></p></span>     <span class = "user-info-background" ><p><?=$post->getDateCreationPost()?>
+        
     
-    <?php if (App\Session::isAdmin() || App\Session::getUser() == $post->getUser()){ ?>
+        <?php if (App\Session::isAdmin() || App\Session::getUser() == $post->getUser()){ ?>
+        <a href = "index.php?ctrl=forum&action=deletePostByCat&id=<?=$post->getId()?>"><i class="fa-regular fa-trash-can"></i></a>
+        <?php } 
+        if (App\Session::getUser() == $post->getUser() && $locked != 1){ ?>
+        <a href = "index.php?ctrl=forum&action=updatePostPage&id=<?=$post->getId()?>"><i class="fa-regular fa-pen-to-square"></i></a></p>
+        <span>
+        
+        <?php } ?>
+        </div>
 
-        <button><a href = "index.php?ctrl=forum&action=deletePostByCat&id=<?=$post->getId()?>">Supprimer</a></button></p>
+        <span class = "post-text"><?=$post->getTexte()?> </span>
+        
+        </div>
+
+<?php }  ?>
     
-    <?php } } ?>
+  
+
+    
+    
 
 <?php
 
@@ -52,8 +81,8 @@ foreach($post_data as $post ){
 
 if ($locked == 1)
 {?>
-    <p>------------------------------------------------</p>
-    <p> Ce topic est verouillé. </p>
+    
+    <p class = "security-p-topics"> Ce topic est verouillé. </p>
     
 <?php }
 
@@ -61,8 +90,8 @@ if ($locked == 1)
 
 elseif (!isset($_SESSION['user']))
     {?>
-    <p>------------------------------------------------</p>
-    <p> Vous devez être connecté pour répondre </p>
+
+    <p class = "security-p-topics"> Vous devez être connecté pour répondre </p>
     
 <?php }
 
@@ -70,20 +99,31 @@ elseif (!isset($_SESSION['user']))
 
 elseif (App\Session::getUser()->getBanStatus() == 3)
     {?>
-    <p>------------------------------------------------</p>
-    <p> Vous ne pouvez pas répondre, vous avez un ban moyen. </p>
+
+    <p class = "security-p-topics"> Vous ne pouvez pas répondre, vous avez un ban moyen. </p>
     
 <?php }
 
 // Si user connecté, pas banni et topic pas verouillé, affichage du formulaire
 else
 { ?>
-<h2> Ajouter un post </h2>
+<div class = "add-topic-form">
+    <div class="form-add-post-top">
 
-<form action="index.php?ctrl=forum&action=addPost&id=<?=$topicId?>" method = "post" >
-    <input type = "textarea" name = "texte" placeholder = "Votre message">
-    <input type="submit" name = "submit" value="Poster">
-</form>
+        <h2 class = "add-topic-h2"> Ajouter un post </h2>
+
+        <form action="index.php?ctrl=forum&action=addPost&id=<?=$topicId?>" method = "post" >
+    
+            <input type="submit" name = "submit" value="Poster" class = "form-add-topic-submit">
+        </div>
+        <div class = "textearea-add-post">
+            <textarea class = "form-add-topic-textarea" name = "texte" placeholder = "Votre message..." rows = "5" cols = "150"></textarea>
+            </div>
+        </form>
+    </div>
+</div>
 
 <?php } ?>
+
+</div>
 

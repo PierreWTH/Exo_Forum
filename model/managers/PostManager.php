@@ -59,7 +59,25 @@
             return $nbrPost;
         }
 
+        // Récuperer texte d'un post
+        public function updateTextPost($texte, $id) 
+        {
+            $sql = "UPDATE ".$this->tableName." 
+                SET texte = :texte
+                WHERE id_post = :id";
+
+                DAO::update($sql, ['texte' => $texte, 'id' => $id]);
+        }
+
+
+
+
+
+
+
     }
+
+
         
         
         

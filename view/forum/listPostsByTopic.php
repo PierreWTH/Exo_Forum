@@ -55,7 +55,11 @@ foreach($post_data as $post ){
         
     
         <?php if (App\Session::isAdmin() || App\Session::getUser() == $post->getUser()){ ?>
-        <a href = "index.php?ctrl=forum&action=deletePost&id=<?=$post->getId()?>"><i class="fa-regular fa-trash-can"></i></a></p><span>
+        <a href = "index.php?ctrl=forum&action=deletePost&id=<?=$post->getId()?>"><i class="fa-regular fa-trash-can"></i></a>
+        <?php } 
+        if (App\Session::getUser() == $post->getUser() && $locked != 1){ ?>
+        <a href = "index.php?ctrl=forum&action=updatePostPage&id=<?=$post->getId()?>"><i class="fa-regular fa-pen-to-square"></i></a></p>
+        <span>
         
         <?php } ?>
         </div>

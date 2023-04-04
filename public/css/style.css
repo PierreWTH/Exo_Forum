@@ -528,7 +528,31 @@ th i {
     
 }
 
+.message-update{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
 
+.update-textarea{
+    width: 400px;
+}
+
+.form-update-post{
+    border: 0px;
+    font-family: "Poppins";
+    background-color: #f5edf6;
+    padding: 10px;
+    border-radius: 10px;
+    
+}
+
+.submit-update{
+    display: flex;
+    justify-content: center;
+}
 
 .lock-topic{
     margin-bottom: 20px;

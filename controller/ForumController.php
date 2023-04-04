@@ -55,6 +55,41 @@
             ];
         }
 
+        public function updatePostPage($id)
+        {   
+            $postManager = new PostManager();
+            $texte = $postManager->findOneByid($id)->getTexte();
+
+            return [
+                "view" => VIEW_DIR."forum/updatePost.php",
+                "data" => [
+                    "texte" => $texte
+                    
+                ]
+            ];
+        }
+
+        // Modifier un post 
+        public function updatePost($id)
+        {   
+            $postManager = new PostManager();
+
+            $topicId = $postManager->findOneByid($id)->getTopic()->getId();
+
+            if (isset($_POST['submitUpdate']) && isset($_SESSION['user']))
+            {
+                $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+                if($texte)
+                {
+                    $postManager->updateTextPost($texte, $id);
+                } 
+            
+            }
+
+            $this->redirectTo("forum", "listPosts", $topicId);
+        }
+
         // Lister les Posts d'un topic qui est dans une catégorie
         public function listPostsByTopicCategorie($id)
         {
@@ -297,9 +332,6 @@
                 $this->redirectTo("forum", "listTopics");
             }
         }
-    
-    
-    
     
     
     }

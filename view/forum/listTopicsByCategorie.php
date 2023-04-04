@@ -56,6 +56,7 @@ else
                 <th class="th-topic-details"> Pseudo</th>
                 <th class="th-topic-details">Date</th>
                 <th class="th-topic-details"><i class="fa-regular fa-comment-dots"></i></th>
+                <th class="th-topic-details">Dernier Post</th>
                 <?php
                 if (isset($_SESSION['user'])){
                 if (App\Session::isAdmin()){?>
@@ -79,6 +80,7 @@ else
             <td class="td-topic-details"><?=$topic->getUser()->getPseudo()?></td>
             <td class="td-topic-details1"><?=$topic->getDateCreationTopic()?></td>
             <td class="td-topic-details1"><?=$topic->getNbPosts()?></td>
+            <td class="td-topic-details1"><?=$topic->getLastPost()?></td>
         
         
     

@@ -12,6 +12,7 @@
         private $user;
         private $categorie;
         private $nbPosts;
+        private $lastPost;
 
         public function __construct($data){         
             $this->hydrate($data);        
@@ -117,6 +118,26 @@
         public function setNbPosts($nbPosts)
         {
                 $this->nbPosts = $nbPosts;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of lastPost
+         */ 
+        public function getLastPost()
+        {
+                return $this->lastPost;
+        }
+
+        /**
+         * Set the value of lastPost
+         *
+         * @return  self
+         */ 
+        public function setLastPost($lastPost)
+        {
+                $this->lastPost = $lastPost;
 
                 return $this;
         }

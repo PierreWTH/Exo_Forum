@@ -66,6 +66,17 @@
            
         }
 
+        // Bannir un utilisateur 
+        public function attributeRole($id, $role)
+        {
+            $sql = "UPDATE user
+            SET role = :role
+            WHERE id_user = :id";
+
+                DAO::update($sql, ['role' => $role, 'id' => $id], false);
+           
+        }
+
         // Ajouter un avatar
         public function avatarAdder($id, $avatar)
         {

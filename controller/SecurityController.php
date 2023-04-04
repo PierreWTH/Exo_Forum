@@ -199,6 +199,23 @@
 
         }
 
+        // Attribuer un role
+        public function changeRole($id)
+        {
+            $userManager = new UserManager;
+
+            if (isset($_POST['submitRole']))
+            {
+                $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+                if($role)
+                {
+                    $userManager->attributeRole($id, $role);
+                    $this->redirectTo("home", "users");
+                }
+            }
+        }  
+
         // Ajouter un avatar
         public function addAvatar($id)
         {

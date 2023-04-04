@@ -26,7 +26,9 @@ $users = $result["data"]['users'];
                 <th class="th-topic-details"> Date d'inscription</th>
                 <th class="th-topic-details">Email</th>
                 <th class="th-topic-details">Statut</th>
-                <th class="th-topic-details">Gerer</th>
+                <th class="th-topic-details">Bannir</th>
+                <th class="th-topic-details">Role</th>
+                <th class="th-topic-details">Changer Role</th>
             </tr>
         </thead>
         <tbody>
@@ -73,6 +75,15 @@ $users = $result["data"]['users'];
                     <option value="1">Débannir</option>
         </select>
         <input type="submit" name = "submitBan" value="OK" class = "form-add-topic-submit">
+    </form> </td>
+    <td class="td-topic-details"><?=$user->getRole()?></td>
+    <!-- Formulaire de banissement -->
+    <td class="td-topic-details"><form action="index.php?ctrl=security&action=changeRole&id=<?= $user->getId() ?>" method = "post" > 
+        <select name="role" class = "form-select-category">
+                    <option value="member">Member</option>
+                    <option value="admin">Admin</option>
+        </select>
+        <input type="submit" name = "submitRole" value="OK" class = "form-add-topic-submit">
     </form> </td>
 
     <?php

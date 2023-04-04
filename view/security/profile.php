@@ -39,7 +39,7 @@ else {
 <div>
 <p> <span class = "bold">Pseudo : </span><?= App\Session::getUser()->getPseudo()?> </p>
 <p> <span class = "bold">Adresse mail :</span> <?= App\Session::getUser()->getEmail()?> </p>
-<p> <span class = "bold">Staut : </span> 
+<p> <span class = "bold">Statut : </span> 
 
 <?php
 // Afficher le statut de l'user

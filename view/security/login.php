@@ -12,11 +12,11 @@
         <div class = "security-form-input">
             <form action="index.php?ctrl=security&action=login" method = "post" >
                 <p class = "security-p"> Email </p>
-                <input type = "text" name = "email" placeholder = "Entrez votre mail">
+                <input type = "text" name = "email" placeholder = "Entrez votre mail" required>
         </div>
         <div class = "security-form-input">
             <p class = "security-p"> Mot de passe </p>
-            <input type = "password" name = "password" placeholder = "Entrez votre mot de passe">
+            <input type = "password" name = "password" placeholder = "Entrez votre mot de passe" required>
         </div>
         <div>
             <input type="submit" name = "submitLogin" value="Se connecter">

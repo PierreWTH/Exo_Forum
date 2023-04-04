@@ -650,6 +650,33 @@ margin: 20px auto;
         margin-bottom: 20px;
     }
 }
+
+/*REGLEMENT*/
+
+.forum-rules{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+}
+
+.contenu-rules{
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 50px;
+}
+
+.contenu-rules h3{
+    font-family: "Poppins";
+    margin: 20px 0px;
+}
+
+/*LEGAL MENTION*/
+
+
+
 /*FOOTER*/
 
 footer{

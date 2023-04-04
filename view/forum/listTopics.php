@@ -74,7 +74,7 @@ $categories = $result["data"]['categories'];
         {
             ?>
 
-            <p class = "security-p-topics">Vous avec un banissement léger ou moyen, vous ne pouvez pas poster de topics. </p>
+            <p class = "security-p-topics">Vous avez un banissement léger ou moyen, vous ne pouvez pas poster de topics. </p>
 
 
         

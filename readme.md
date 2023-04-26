@@ -44,7 +44,6 @@ Ce projet réalisé avec un mini-framework Elan Formation est un forum fonctionn
         <ol> Informations, statut </ol><br>
         <ol> 3 niveaux de ban : leger moyen lourd </ol><br>
         <ol> User ou Admin </ol><br>
-        
     </td>
   </tr>
 </tbody>

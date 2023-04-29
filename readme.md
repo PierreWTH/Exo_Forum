@@ -53,7 +53,7 @@ Ce projet réalisé avec un mini-framework Elan Formation est un forum fonctionn
 
 <b> Desktop <b>
 
-![Forum-Desktop]()
+![Forum-Desktop](https://github.com/PierreWTH/Exo_Forum/blob/master/public/img/forum.gif)
 
 ## Technologies utilisées ⚡
 

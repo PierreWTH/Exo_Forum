@@ -55,10 +55,6 @@ Ce projet réalisé avec un mini-framework Elan Formation est un forum fonctionn
 
 ![Forum-Desktop]()
 
-<b> Mobile <b>
-
-![Forum-Mobile]()
-
 ## Technologies utilisées ⚡
 
 - Symfony 6

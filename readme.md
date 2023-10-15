@@ -55,6 +55,5 @@ Ce projet réalisé avec un mini-framework Elan Formation est un forum fonctionn
 
 ## Technologies utilisées ⚡
 
-- Symfony 6
 - PHP 8.2
 - CSS 3
